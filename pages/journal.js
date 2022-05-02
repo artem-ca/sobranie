@@ -8,17 +8,15 @@ import Post from '../components/Post'
 
 import { sortByDate } from '../utils'
 
-export default function Home({ posts }) {
+export default function Journal({ posts }) {
     return (
         <section>
-            <div className='text-3xl font-bold text-center m-10'>Главная</div>
+            <div className='text-3xl font-bold text-center m-10'>Журнал</div>
 
-            <div className=''>
-                <div className='flex flex-wrap gap-10'>
-                    {posts.map((post, index) => (
-                        <Post key={index} post={post} />
-                    ))}
-                </div>
+            <div className='gap-5'>
+                {posts.map((post, index) => (
+                    <Post key={index} post={post} />
+                ))}
             </div>
         </section>
     )

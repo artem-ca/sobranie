@@ -1,0 +1,70 @@
+// import fs from 'fs'
+// import path from 'path'
+// import matter from 'gray-matter'
+
+// export default function Posts({ posts }) {
+//     return (
+//         <div>
+//             {/* {posts.map(({ frontmatter: { title, description, date } }) => (
+//                 <article key={title}>
+//                     <header>
+//                         <h3>{title}</h3>
+//                         <span>{date}</span>
+//                     </header>
+//                     <section>
+//                         <p>{description}</p>
+//                     </section>
+//                 </article>
+//             ))} */}
+//         </div>
+//     )
+// }
+
+// export async function getStaticProps() {
+//     const files = fs.readdirSync(path.join('posts'))
+
+//     const posts = files.map((filename) => {
+//         const markdownWithMetadata = fs
+//             .readFileSync(path.join('posts', filename))
+//             .toString()
+
+//         const { data } = matter(markdownWithMetadata)
+
+//         // Convert post date to format: Month day, Year
+//         const options = { year: 'numeric', month: 'long', day: 'numeric' }
+//         const formattedDate = data.date.toLocaleDateString('en-US', options)
+
+//         const frontmatter = {
+//             ...data,
+//             date: formattedDate,
+//         }
+
+//         return {
+//             slug,
+//             frontmatter,
+//         }
+//     })
+
+//     return {
+//         props: {
+//             posts,
+//         },
+//     }
+// }
+
+// old POST
+// ;<section>
+//     <div className='card'>
+//         <img src={post.frontmatter.cover_image} alt='' />
+
+//         <div className='post-date'>Posted on {post.frontmatter.date}</div>
+
+//         <h3>{post.frontmatter.title}</h3>
+
+//         <p>{post.frontmatter.excerpt}</p>
+
+//         <Link href={`/blog/${post.slug}`}>
+//             <a className='btn'>Read More</a>
+//         </Link>
+//     </div>
+// </section>
