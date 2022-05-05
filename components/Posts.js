@@ -1,43 +1,46 @@
+// import Head from 'next/head'
 // import fs from 'fs'
 // import path from 'path'
 // import matter from 'gray-matter'
 
+// import Link from 'next/link'
+
+// import Post from '../components/Post'
+
+// import { sortByDate } from '../utils'
+// import PersonCard from './PersonCard'
+
 // export default function Posts({ posts }) {
 //     return (
-//         <div>
-//             {/* {posts.map(({ frontmatter: { title, description, date } }) => (
-//                 <article key={title}>
-//                     <header>
-//                         <h3>{title}</h3>
-//                         <span>{date}</span>
-//                     </header>
-//                     <section>
-//                         <p>{description}</p>
-//                     </section>
-//                 </article>
-//             ))} */}
-//         </div>
+//         <section>
+//             <div className='mt-12'>
+//                 <div className='flex flex-wrap gap-10'>
+//                     {posts.map((post, index) => (
+//                         // <Post key={index} post={post} />
+//                         <PersonCard key={index} post={post} />
+//                     ))}
+//                 </div>
+//             </div>
+//         </section>
 //     )
 // }
 
 // export async function getStaticProps() {
+//     // Get files from the post dir
 //     const files = fs.readdirSync(path.join('posts'))
 
+//     // Get slug and frontmatter from posts
 //     const posts = files.map((filename) => {
-//         const markdownWithMetadata = fs
-//             .readFileSync(path.join('posts', filename))
-//             .toString()
+//         // Create slug
+//         const slug = filename.replace('.md', '')
 
-//         const { data } = matter(markdownWithMetadata)
+//         // Get frontmatter
+//         const markdownWithMetadata = fs.readFileSync(
+//             path.join('posts', filename),
+//             'utf-8'
+//         )
 
-//         // Convert post date to format: Month day, Year
-//         const options = { year: 'numeric', month: 'long', day: 'numeric' }
-//         const formattedDate = data.date.toLocaleDateString('en-US', options)
-
-//         const frontmatter = {
-//             ...data,
-//             date: formattedDate,
-//         }
+//         const { data: frontmatter } = matter(markdownWithMetadata)
 
 //         return {
 //             slug,
@@ -47,24 +50,7 @@
 
 //     return {
 //         props: {
-//             posts,
+//             posts: posts.sort(sortByDate),
 //         },
 //     }
 // }
-
-// old POST
-// ;<section>
-//     <div className='card'>
-//         <img src={post.frontmatter.cover_image} alt='' />
-
-//         <div className='post-date'>Posted on {post.frontmatter.date}</div>
-
-//         <h3>{post.frontmatter.title}</h3>
-
-//         <p>{post.frontmatter.excerpt}</p>
-
-//         <Link href={`/blog/${post.slug}`}>
-//             <a className='btn'>Read More</a>
-//         </Link>
-//     </div>
-// </section>

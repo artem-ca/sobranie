@@ -6,7 +6,7 @@ cover_image: '/images/posts/Alexander_III.jpg'
 
 
 <!-- ![Nikolai II](/public/images/posts/Nikolai_II.jpg)  -->
-<img style="float: left; border-radius: 1rem; margin-right: 1rem" src="/images/posts/Alexander_III.jpg">
+<img style="float: left; border-radius: 1rem; margin-right: 1rem; height: 500px; width: 350px" src="/images/posts/Alexander_III.jpg">
 
 # Александр III
 

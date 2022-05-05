@@ -3,6 +3,7 @@ import Head from 'next/head'
 
 import Nav from '../components/Nav'
 import Sidebar from '../components/Sidebar'
+import Footer from '../components/Footer'
 
 function MyApp({ Component, pageProps }) {
     return (
@@ -13,19 +14,11 @@ function MyApp({ Component, pageProps }) {
                 <link rel='icon' href='/CoatofRussianEmpire.ico' />
             </Head>
 
-            <div className='flex'>
-                <Nav />
+            <Nav />
 
-                <a
-                    href='/'
-                    className='text-pale-white self-center items-center m-auto'>
-                    Sobranie
-                </a>
-            </div>
-
-            <main className='flex pr-10'>
+            <main className='flex px-2 '>
                 <Sidebar />
-                <div className='w-full m-auto flex bg-pale-white rounded-3xl'>
+                <div className='w-full m-auto flex bg-pale-white rounded-3xl pt-12 pb-16'>
                     <div className='max-w-5xl w-full m-auto min-h-screen'>
                         <div className='bg-white min-h-screen w-full rounded-3xl p-3'>
                             <Component {...pageProps} />
@@ -33,6 +26,8 @@ function MyApp({ Component, pageProps }) {
                     </div>
                 </div>
             </main>
+
+            <Footer />
         </section>
     )
 }
