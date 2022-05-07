@@ -11,8 +11,8 @@ import PersonCard from '../components/PersonCard'
 
 export default function Persons({ posts }) {
     return (
-        <section>
-            <div className='text-3xl font-bold text-center'>Люди</div>
+        <section className='max-w-5xl mx-auto'>
+            <div className='text-3xl font-bold text-center mt-12'>Люди</div>
 
             <div className='mt-12'>
                 <div className='flex flex-wrap gap-10'>

@@ -18,8 +18,8 @@ function MyApp({ Component, pageProps }) {
 
             <main className='flex px-2 '>
                 <Sidebar />
-                <div className='w-full m-auto flex bg-pale-white rounded-3xl pt-12 pb-16'>
-                    <div className='max-w-5xl w-full m-auto min-h-screen'>
+                <div className='w-full m-auto flex bg-pale-white rounded-3xl pb-16'>
+                    <div className='max-w-8xl w-full m-auto min-h-screen'>
                         <div className='bg-white min-h-screen w-full rounded-3xl p-3'>
                             <Component {...pageProps} />
                         </div>
