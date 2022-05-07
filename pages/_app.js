@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }) {
                 <Sidebar />
                 <div className='w-full m-auto flex bg-pale-white rounded-3xl pb-16'>
                     <div className='max-w-8xl w-full m-auto min-h-screen'>
-                        <div className='bg-white min-h-screen w-full rounded-3xl p-3'>
+                        <div className='bg-white min-h-screen w-full rounded-3xl'>
                             <Component {...pageProps} />
                         </div>
                     </div>
