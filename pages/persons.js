@@ -8,11 +8,12 @@ import Post from '../components/Post'
 import { sortByDate } from '../utils'
 import Posts from '../components/Posts'
 import PersonCard from '../components/PersonCard'
+import { ThemeToggle } from '../components/ThemeToggle'
 
 export default function Persons({ posts }) {
     return (
         <section className='max-w-5xl mx-auto'>
-            <div className='text-3xl font-bold text-center mt-12'>Люди</div>
+            <div className='text-3xl font-bold text-center mt-12'>Цари</div>
 
             <div className='mt-12'>
                 <div className='flex flex-wrap gap-10'>

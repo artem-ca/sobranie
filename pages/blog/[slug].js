@@ -15,10 +15,14 @@ export default function PostPage({
             <div className=''>
                 <div className='flex px-4 pt-8 pb-10 lg:px-8'>
                     <Link href='/persons'>
-                        <a className='group flex font-semibold text-sm leading-6 text-slate-500 hover:text-slate-700 font-montserrat'>
+                        <a
+                            className='group flex font-semibold text-sm leading-6 font-montserrat 
+                        text-slate-600 hover:text-slate-500 dark:text-slate-300 dark:hover:opacity-80
+'
+                        >
                             <svg
                                 viewBox='0 -9 3 24'
-                                class='overflow-visible mr-3 text-slate-500 w-auto h-6 group-hover:text-slate-700 '
+                                class='overflow-visible mr-3 w-auto h-6 text-slate-600  dark:text-slate-300 dark:hover:opacity-80'
                             >
                                 <path
                                     d='M3 0L0 3L3 6'
