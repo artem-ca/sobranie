@@ -4,17 +4,22 @@ import path from 'path'
 import matter from 'gray-matter'
 import { marked } from 'marked'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 export default function PostPage({
     frontmatter: { title, date, cover_image },
     slug,
     content,
 }) {
+    const router = useRouter()
+
     return (
         <>
             <div className=''>
                 <div className='flex px-4 pt-8 pb-10 lg:px-8'>
-                    <Link href='/persons'>
+                    <button
+                        onClick={(e) => router.back() && e.preventDefault()}
+                    >
                         <a
                             className='group flex font-semibold text-sm leading-6 font-montserrat 
                         text-slate-600 hover:text-slate-500 dark:text-slate-300 dark:hover:opacity-80
@@ -35,7 +40,7 @@ export default function PostPage({
                             </svg>
                             Назад
                         </a>
-                    </Link>
+                    </button>
                 </div>
                 <div
                     className='text-lg font-montserrat max-w-5xl mx-auto'

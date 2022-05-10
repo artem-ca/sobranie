@@ -61,6 +61,7 @@ module.exports = {
 
                 'total-black': '#000',
                 'strange-black': '#0F0F11',
+                'strict-black': '#121214',
 
                 'darkest-gray': '#141414',
                 'strange-gray': '#1E1E22',

@@ -48,7 +48,7 @@ function SunIcon({ selected, ...props }) {
     return (
         <svg
             xmlns='http://www.w3.org/2000/svg'
-            class='h-6 w-6'
+            class='h-6 w-6 duration-500 delay-75 ease-in-out hover:rotate-90 active:scale-110'
             fill='none'
             viewBox='0 0 24 24'
             stroke='currentColor'
@@ -69,7 +69,7 @@ function MoonIcon({ selected, ...props }) {
     return (
         <svg
             xmlns='http://www.w3.org/2000/svg'
-            class='h-6 w-6'
+            class='h-6 w-6 ease-in-out duration-500 delay-75 hover:scale-90 hover:rotate-45 active:scale-75'
             fill='none'
             viewBox='0 0 24 24'
             stroke='currentColor'
@@ -90,7 +90,7 @@ function PcIcon({ selected, ...props }) {
     return (
         <svg
             xmlns='http://www.w3.org/2000/svg'
-            class='h-6 w-6'
+            className='h-6 w-6'
             fill='none'
             viewBox='0 0 24 24'
             stroke='currentColor'
@@ -119,6 +119,7 @@ function useTheme() {
     }, [])
 
     useIsomorphicLayoutEffect(() => {
+        update()
         if (setting === 'system') {
             localStorage.removeItem('theme')
         } else if (setting === 'light' || setting === 'dark') {
@@ -187,16 +188,16 @@ export function ThemeToggle({ panelClassName = 'mt-4' }) {
             </Listbox.Button>
             <Transition
                 as={Fragment}
-                enter='transition-opacity duration-100'
+                enter='transition-opacity duration-150'
                 enterFrom='opacity-0'
                 enterTo='opacity-100'
-                leave='transition-opacity duration-100'
+                leave='transition-opacity duration-150'
                 leaveFrom='opacity-100'
                 leaveTo='opacity-0'
             >
                 <Listbox.Options
                     className={clsx(
-                        'absolute z-50 top-full right-0 overflow-hidden rounded-lg shadow-xl w-36 p-1 text-sm font-medium bg-black text-slate-300',
+                        'absolute z-50 top-full right-0 overflow-hidden rounded-lg shadow-xl w-36 p-1 text-sm font-medium bg-black text-slate-300 dark:border',
                         panelClassName
                     )}
                 >

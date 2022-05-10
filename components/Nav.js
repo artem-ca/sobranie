@@ -70,7 +70,7 @@ export default function Nav() {
 
                             <ul className='md:flex gap-x-6  ml-auto hidden'>
                                 <li>
-                                    <Link href='/persons'>
+                                    <Link href='/glossary'>
                                         <a className='hover:text-orange-300 transition duration-300 delay-5 ease-in-out'>
                                             Глоссарий
                                         </a>
@@ -92,7 +92,7 @@ export default function Nav() {
                                 </li>
                                 <li>
                                     <Link href='/shop'>
-                                        <a className='hover:text-zinc-400 transition duration-300 delay-5 ease-in-out'>
+                                        <a className='hover:text-zinc-300 transition duration-300 delay-5 ease-in-out'>
                                             Магазин
                                         </a>
                                     </Link>
@@ -107,31 +107,57 @@ export default function Nav() {
                                 </li> */}
                             </ul>
                         </div>
-                        <div className='hidden md:flex ml-6 pl-6 items-center border-l border-slate-500 gap-x-4'>
+                        <div className='hidden md:flex ml-6 pl-6 items-center border-l border-slate-500 gap-x-3'>
                             <ThemeToggle panelClassName='mt-7' />
 
-                            <button
-                                type='button'
-                                className='w-8 h-8 -my-1 flex items-center 
-                                    justify-center hover:text-slate-300'
-                            >
-                                <span className='sr-only'>Profile</span>
-                                <svg
-                                    xmlns='http://www.w3.org/2000/svg'
-                                    fill='none'
-                                    viewBox='0 0 24 24'
-                                    stroke='currentColor'
-                                    stroke-width='2'
-                                    width='24'
-                                    height='24'
+                            <Link href='/profile/bookmarks'>
+                                <button
+                                    type='button'
+                                    className='w-8 h-8 -my-1 flex items-center 
+                                justify-center '
                                 >
-                                    <path
-                                        stroke-linecap='round'
-                                        stroke-linejoin='round'
-                                        d='M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z'
-                                    />
-                                </svg>
-                            </button>
+                                    <span className='sr-only'>Bookmarks</span>
+                                    <svg
+                                        xmlns='http://www.w3.org/2000/svg'
+                                        class='h-5 w-5 hover:fill-pale-white'
+                                        fill='none'
+                                        viewBox='0 0 24 24'
+                                        stroke='currentColor'
+                                        stroke-width='2'
+                                    >
+                                        <path
+                                            stroke-linecap='round'
+                                            stroke-linejoin='round'
+                                            d='M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z'
+                                        />
+                                    </svg>
+                                </button>
+                            </Link>
+
+                            <Link href='/profile'>
+                                <button
+                                    type='button'
+                                    className='w-8 h-8 -my-1 flex items-center 
+                                justify-center hover:text-slate-300'
+                                >
+                                    <span className='sr-only'>Profile</span>
+                                    <svg
+                                        xmlns='http://www.w3.org/2000/svg'
+                                        fill='none'
+                                        viewBox='0 0 24 24'
+                                        stroke='currentColor'
+                                        stroke-width='2'
+                                        width='24'
+                                        height='24'
+                                    >
+                                        <path
+                                            stroke-linecap='round'
+                                            stroke-linejoin='round'
+                                            d='M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z'
+                                        />
+                                    </svg>
+                                </button>
+                            </Link>
                         </div>
 
                         <button
