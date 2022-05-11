@@ -6,7 +6,7 @@ export default function PersonCard({ post }) {
             className='w-max cursor-pointer transition duration-300 delay-10 ease-in-out 
                         transform hover:-translate-y-2'
         >
-            <Link href={`/blog/${post.slug}`}>
+            <Link href={`/glossary/persons/${post.slug}`}>
                 <a className=''>
                     <img
                         src={post.frontmatter.cover_image}

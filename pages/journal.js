@@ -1,7 +1,5 @@
 import Head from 'next/head'
 
-import Post from '../components/Post'
-
 export default function Journal({ posts }) {
     return (
         <section>

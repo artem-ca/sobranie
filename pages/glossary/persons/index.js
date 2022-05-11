@@ -4,15 +4,13 @@ import path from 'path'
 import matter from 'gray-matter'
 import { useRouter } from 'next/router'
 
-// import Post from '../../components/Post'
-
-import { sortByDate } from '../../utils'
-import PersonCard from '../../components/PersonCard'
+import { sortByDate } from '../../../utils'
+import PersonCard from '../../../components/PersonCard'
 
 export default function Persons({ posts }) {
     const router = useRouter()
     return (
-        <section className='mx-auto'>
+        <section className='mx-auto '>
             <div className='flex px-4 pt-8 pb-10 lg:px-8'>
                 <button onClick={(e) => router.back() && e.preventDefault()}>
                     <a
@@ -53,7 +51,7 @@ export default function Persons({ posts }) {
 
 export async function getStaticProps() {
     // Get files from the post dir
-    const files = fs.readdirSync(path.join('posts'))
+    const files = fs.readdirSync(path.join('posts/tsars'))
 
     // Get slug and frontmatter from posts
     const posts = files.map((filename) => {
@@ -62,7 +60,7 @@ export async function getStaticProps() {
 
         // Get frontmatter
         const markdownWithMetadata = fs.readFileSync(
-            path.join('posts', filename),
+            path.join('posts/tsars', filename),
             'utf-8'
         )
 
