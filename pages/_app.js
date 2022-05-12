@@ -1,8 +1,8 @@
 import '../styles/globals.css'
-import Head from 'next/head'
 
+import Head from 'next/head'
 import Header from '../components/Header'
-import Sidebar from '../components/Sidebar'
+
 import Footer from '../components/Footer'
 
 function MyApp({ Component, pageProps }) {
@@ -17,7 +17,6 @@ function MyApp({ Component, pageProps }) {
             <Header />
 
             <main className='flex px-2 '>
-                {/* <Sidebar /> */}
                 <div
                     className='w-full m-auto flex rounded-3xl pb-16 bg-pale-white text-strange-black
                             dark:bg-strict-black  dark:text-pale-white  border-pale-white/50'
@@ -29,8 +28,7 @@ function MyApp({ Component, pageProps }) {
                     </div>
                 </div>
             </main>
-
-            {/* <Footer /> */}
+            <Footer />
         </section>
     )
 }

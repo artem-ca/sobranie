@@ -1,4 +1,5 @@
 {
   "extends": "next/core-web-vitals",
-  "rules": {"@next/next/no-img-element": "off"}
+  "rules": {"react/no-unknown-property": "off",
+    "@next/next/no-img-element": "off"}
 }

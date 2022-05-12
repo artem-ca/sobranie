@@ -11,7 +11,6 @@
   "dependencies": {
     "@headlessui/react": "^1.6.1",
     "clsx": "^1.1.1",
-    "firebase": "^9.6.10",
     "fs": "^0.0.1-security",
     "marked": "^4.0.14",
     "next": "12.1.4",
@@ -29,6 +28,7 @@
     "postcss": "^8.4.5",
     "postcss-preset-env": "^7.4.4",
     "react-markdown": "^8.0.3",
-    "tailwindcss": "^3.0.24"
+    "tailwindcss": "^3.0.24",
+    "webpack": "^5.72.1"
   }
 }

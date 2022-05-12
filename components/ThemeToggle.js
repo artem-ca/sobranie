@@ -29,17 +29,17 @@ function update() {
 let settings = [
     {
         value: 'light',
-        label: 'Light',
+        label: 'Светлая',
         icon: SunIcon,
     },
     {
         value: 'dark',
-        label: 'Dark',
+        label: 'Темная',
         icon: MoonIcon,
     },
     {
         value: 'system',
-        label: 'System',
+        label: 'Система',
         icon: PcIcon,
     },
 ]
@@ -132,7 +132,7 @@ function useTheme() {
         }
     }, [setting])
 
-    useEffect(() => {
+    useEffect((setSetting) => {
         let mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
 
         if (mediaQuery?.addEventListener) {
@@ -197,7 +197,7 @@ export function ThemeToggle({ panelClassName = 'mt-4' }) {
             >
                 <Listbox.Options
                     className={clsx(
-                        'absolute z-50 top-full right-0 overflow-hidden rounded-lg shadow-xl w-36 p-1 text-sm font-medium bg-black text-slate-300 dark:border',
+                        'absolute z-50 top-full right-0 overflow-hidden rounded-lg shadow-xl w-36 p-1 text-sm font-semibold bg-strict-black text-slate-300 dark:border',
                         panelClassName
                     )}
                 >

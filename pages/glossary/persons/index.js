@@ -10,13 +10,12 @@ import PersonCard from '../../../components/PersonCard'
 export default function Persons({ posts }) {
     const router = useRouter()
     return (
-        <section className='mx-auto '>
+        <section className='mx-auto'>
             <div className='flex px-4 pt-8 pb-10 lg:px-8'>
                 <button onClick={(e) => router.back() && e.preventDefault()}>
                     <a
                         className='group flex font-semibold text-sm leading-6 font-montserrat 
-                        text-slate-600 hover:text-slate-500 dark:text-slate-300 dark:hover:opacity-80
-                        '
+                        text-slate-600 hover:text-slate-500 dark:text-slate-300 dark:hover:opacity-80'
                     >
                         <svg
                             viewBox='0 -9 3 24'
@@ -39,7 +38,7 @@ export default function Persons({ posts }) {
             <div className='text-3xl font-bold text-center'>Цари</div>
 
             <div className='mt-12 max-w-5xl m-auto'>
-                <div className='flex flex-wrap gap-10'>
+                <div className='flex flex-wrap gap-10 justify-evenly'>
                     {posts.map((post, index) => (
                         <PersonCard key={index} post={post} />
                     ))}

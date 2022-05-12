@@ -2,14 +2,13 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 export default function Glossary() {
-    const router = useRouter()
     return (
         <div className='max-w-5xl mx-auto'>
             <div className='text-3xl font-bold text-center mt-10'>
                 Глоссарий
             </div>
 
-            <ul className='flex mt-10 font-semibold text-center m-auto w-max text-2xl gap-x-6'>
+            <ul className='flex flex-wrap mt-10 font-semibold gap-6 text-center m-auto justify-center text-2xl gap-x-6'>
                 <li>
                     <Link href='/glossary/persons'>
                         <a

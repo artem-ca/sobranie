@@ -2,6 +2,10 @@ import Link from 'next/link'
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import Router from 'next/router'
+
+import { Popover, Transition, Dialog } from '@headlessui/react'
+import { Fragment } from 'react'
 
 import clsx from 'clsx'
 import { ThemeToggle } from './ThemeToggle'
@@ -17,7 +21,7 @@ function BookmarkIcon() {
     return (
         <svg
             xmlns='http://www.w3.org/2000/svg'
-            class='h-5 w-5 hover:fill-pale-white'
+            class='h-5 w-5 hover:fill-pale-white cursor-pointer'
             fill='none'
             viewBox='0 0 24 24'
             stroke='currentColor'
@@ -36,6 +40,7 @@ function ProfileIcon() {
     return (
         <svg
             xmlns='http://www.w3.org/2000/svg'
+            class='cursor-pointer'
             fill='none'
             viewBox='0 0 24 24'
             stroke='currentColor'
@@ -56,10 +61,10 @@ export function NavItems() {
     const { pathname } = useRouter()
 
     return (
-        <ul className='md:flex gap-x-6  ml-auto hidden'>
+        <>
             {navigation.map(({ id, title, path }) => (
-                <li>
-                    <Link key={id} href={path}>
+                <li key={id}>
+                    <Link key={id} href={path} passHref>
                         <a
                             className={
                                 '/' + pathname.split('/')[1] === path
@@ -72,15 +77,107 @@ export function NavItems() {
                     </Link>
                 </li>
             ))}
+        </>
+    )
+}
 
-            {/* <li>
-                <Link href='/oldhome'>
-                    <a className='text-blue-600 font-semibold hover:text-blue-800'>
-                        old
-                    </a>
-                </Link>
-            </li> */}
-        </ul>
+export function NavPopover({ display = 'md:hidden', className, ...props }) {
+    let [isOpen, setIsOpen] = useState(false)
+
+    useEffect(() => {
+        if (!isOpen) return
+        function handleRouteChange() {
+            setIsOpen(false)
+        }
+        Router.events.on('routeChangeComplete', handleRouteChange)
+        return () => {
+            Router.events.off('routeChangeComplete', handleRouteChange)
+        }
+    }, [isOpen])
+
+    return (
+        <div className={clsx(className, display)} {...props}>
+            <button
+                type='button'
+                className='flex w-8 h-8 items-center justify-center text-pale-white hover:text-pale-white/80'
+                onClick={() => setIsOpen(true)}
+            >
+                <span className='sr-only'>Navigation</span>
+                <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    class='h-6 w-6'
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    stroke='currentColor'
+                    stroke-width='2'
+                >
+                    <path
+                        stroke-linecap='round'
+                        stroke-linejoin='round'
+                        d='M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z'
+                    />
+                </svg>
+            </button>
+            <Transition as={Fragment} show={isOpen}>
+                <Dialog
+                    as='div'
+                    className={clsx('fixed z-50 inset-0', display)}
+                    open={isOpen}
+                    onClose={setIsOpen}
+                >
+                    <Dialog.Overlay className='fixed inset-0 backdrop-blur-sm bg-black/10' />
+
+                    <Transition.Child
+                        enter='transition ease-out duration-100'
+                        enterFrom='opacity-0 translate-y-1'
+                        enterTo='opacity-100 translate-y-0'
+                        leave='transition ease-in duration-150'
+                        leaveFrom='opacity-100 translate-y-0'
+                        leaveTo='opacity-0 translate-y-1'
+                    >
+                        <div
+                            className='fixed top-5 right-7 max-w-xs w-full rounded-lg shadow-lg p-6 text-base font-semibold 
+                  bg-strict-black text-pale-white dark:border-2 border-pale-white/50'
+                        >
+                            <button
+                                type='button'
+                                className='absolute top-4 right-4 w-9 h-9 flex items-center justify-center 
+                                   hover:text-pale-white/80
+                                   duration-500 delay-100 ease-in-out hover:rotate-90 active:scale-90'
+                                onClick={() => setIsOpen(false)}
+                            >
+                                <span className='sr-only'>
+                                    Close navigation
+                                </span>
+                                <svg
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    class='h-6 w-6'
+                                    fill='none'
+                                    viewBox='0 0 24 24'
+                                    stroke='currentColor'
+                                    stroke-width='2'
+                                >
+                                    <path
+                                        stroke-linecap='round'
+                                        stroke-linejoin='round'
+                                        d='M6 18L18 6M6 6l12 12'
+                                    />
+                                </svg>
+                            </button>
+                            <ul className='space-y-6 pb-6 border-b border-pale-white/70'>
+                                <NavItems />
+                            </ul>
+
+                            <div className='flex items-center justify-between mx-auto gap-x-10 pt-6 w-max font-normal text-pale-white/80'>
+                                <ProfileIcon />
+                                <BookmarkIcon />
+                                <ThemeToggle />
+                            </div>
+                        </div>
+                    </Transition.Child>
+                </Dialog>
+            </Transition>
+        </div>
     )
 }
 
@@ -108,97 +205,66 @@ export default function Header() {
             className={clsx(
                 'sticky top-0 z-40 w-full flex-none lg:z-50 dark:border-b backdrop-blur transition-colors duration-700',
                 isOpaque
-                    ? 'bg-strict-black/90 supports-backdrop-blur:bg-strict-black/10 dark:bg-strict-black/75'
+                    ? 'bg-strict-black/90 supports-backdrop-blur:bg-strict-black/10 dark:bg-strange-black/75'
                     : 'bg-strict-black supports-backdrop-blur:bg-strict-black/60 dark:bg-transparent'
             )}
         >
             <div className='flex-none text-pale-white font-bold max-w-8xl mx-auto w-full'>
-                <div className='py-4 px-4 md:px-8'>
+                <div className='py-4 px-6 sm:px-8'>
                     <div className='relative flex items-center'>
-                        <Link href='/'>
-                            <a className='font-display mr-3 pl-1 hover:text-rose-600 transition duration-300 delay-5 ease-in-out '>
+                        <Link href='/' passHref>
+                            <a
+                                className='font-display mr-3 pl-1 hover:text-rose-600 transition duration-300 delay-5 ease-in-out'
+                                onContextMenu={(e) => {
+                                    e.preventDefault()
+                                    Router.push('/')
+                                }}
+                            >
+                                <span className='sr-only'>
+                                    Sobranie Home Page
+                                </span>
                                 Sobranie
                             </a>
                         </Link>
 
-                        <div className='ml-auto flex'>
-                            {/* <div className='lg:flex bg-white rounded-lg mr-6 hidden ml-auto'> */}
-                            {/* <input
-                                    className='rounded-lg px-3 text-black outline-none pr-3'
-                                    type='text'
-                                /> */}
+                        <div className='relative hidden md:flex items-center ml-auto'>
+                            <nav className='leading-6'>
+                                <ul className='flex gap-x-6 '>
+                                    <NavItems />
+                                </ul>
+                            </nav>
 
-                            <button
-                                type='button'
-                                className='ml-auto w-8 h-8 -my-1 flex items-center 
-                                   justify-center hover:text-slate-300 mr-3'
-                            >
-                                <span className='sr-only'>Search</span>
-                                <svg
-                                    width='24'
-                                    height='24'
-                                    fill='none'
-                                    stroke='white'
-                                    stroke-width='2'
-                                    stroke-linecap='round'
-                                    stroke-linejoin='round'
-                                    aria-hidden='true'
-                                >
-                                    <path d='m19 19-3.5-3.5'></path>
-                                    <circle cx='11' cy='11' r='6'></circle>
-                                </svg>
-                            </button>
-                            {/* </div> */}
+                            <div className='flex gap-x-3 items-center border-l border-pale-white/60 ml-6 pl-5'>
+                                <ThemeToggle panelClassName='mt-7' />
 
-                            <NavItems />
-                        </div>
-                        <div className='hidden md:flex ml-6 pl-6 items-center border-l border-slate-500 gap-x-3'>
-                            <ThemeToggle panelClassName='mt-7' />
+                                <Link href='/profile/bookmarks' passHref>
+                                    <button
+                                        type='button'
+                                        className='w-8 h-8 -my-1 flex items-center justify-center'
+                                    >
+                                        <span className='sr-only'>
+                                            Bookmarks
+                                        </span>
+                                        <BookmarkIcon />
+                                    </button>
+                                </Link>
 
-                            <Link href='/profile/bookmarks'>
-                                <button
-                                    type='button'
-                                    className='w-8 h-8 -my-1 flex items-center 
-                                justify-center '
-                                >
-                                    <span className='sr-only'>Bookmarks</span>
-                                    <BookmarkIcon />
-                                </button>
-                            </Link>
-
-                            <Link href='/profile'>
-                                <button
-                                    type='button'
-                                    className='w-8 h-8 -my-1 flex items-center 
-                                justify-center hover:text-slate-300'
-                                >
-                                    <span className='sr-only'>Profile</span>
-                                    <ProfileIcon />
-                                </button>
-                            </Link>
+                                <Link href='/profile' passHref>
+                                    <button
+                                        type='button'
+                                        className='w-8 h-8 -my-1 flex items-center justify-center hover:text-slate-300'
+                                    >
+                                        <span className='sr-only'>Profile</span>
+                                        <ProfileIcon />
+                                    </button>
+                                </Link>
+                            </div>
                         </div>
 
-                        <button
-                            type='button'
-                            className='w-8 h-8 -my-1 flex items-center ml-auto
-                                    justify-center hover:text-slate-300 md:hidden'
-                        >
-                            <span className='sr-only'>Navigation</span>
-                            <svg
-                                xmlns='http://www.w3.org/2000/svg'
-                                class='h-6 w-6'
-                                fill='none'
-                                viewBox='0 0 24 24'
-                                stroke='currentColor'
-                                stroke-width='2'
-                            >
-                                <path
-                                    stroke-linecap='round'
-                                    stroke-linejoin='round'
-                                    d='M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z'
-                                />
-                            </svg>
-                        </button>
+                        <NavPopover
+                            className='-my-1 ml-auto'
+                            display='md:hidden'
+                        />
                     </div>
                 </div>
             </div>
