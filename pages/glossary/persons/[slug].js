@@ -58,7 +58,7 @@ export async function getStaticPaths() {
 
     const paths = files.map((filename) => ({
         params: {
-            slug: filename.replace('.md', ''),
+            slug: filename.replace('.mdx', ''),
         },
     }))
 
@@ -70,7 +70,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { slug } }) {
     const markdownWithMetadata = fs.readFileSync(
-        path.join('posts/tsars', slug + '.md'),
+        path.join('posts/tsars', slug + '.mdx'),
         'utf-8'
     )
 

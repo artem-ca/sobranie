@@ -6,7 +6,7 @@ import { NavItems } from './Header'
 export default function Footer() {
     return (
         <>
-            <div class='w-full p-20 bg-strict-black text-pale-white dark:border-t-2 border-pale-white/70'>
+            <div class='w-full p-20 bg-strict-black text-pale-white dark:border-t-2 border-pale-white/40'>
                 <div className='max-w-lg flex flex-wrap m-auto gap-x-40 gap-y-10 justify-evenly'>
                     <span className='flex m-auto text-pale-white text-3xl'>
                         Sobranie.

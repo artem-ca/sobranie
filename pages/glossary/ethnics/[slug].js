@@ -43,7 +43,7 @@ export default function PostPage({
                     </button>
                 </div>
                 <div
-                    className='text-lg font-montserrat max-w-5xl mx-auto'
+                    className='text-lg  max-w-5xl mx-auto'
                     dangerouslySetInnerHTML={{
                         __html: marked(content),
                     }}
@@ -58,7 +58,7 @@ export async function getStaticPaths() {
 
     const paths = files.map((filename) => ({
         params: {
-            slug: filename.replace('.md', ''),
+            slug: filename.replace('.mdx', ''),
         },
     }))
 
@@ -70,7 +70,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { slug } }) {
     const markdownWithMetadata = fs.readFileSync(
-        path.join('posts/ethnics', slug + '.md'),
+        path.join('posts/ethnics', slug + '.mdx'),
         'utf-8'
     )
 

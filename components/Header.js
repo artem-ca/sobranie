@@ -15,6 +15,7 @@ const navigation = [
     { id: 2, title: 'Журнал', path: '/journal' },
     { id: 3, title: 'Курсы', path: '/courses' },
     { id: 4, title: 'Магазин', path: '/shop' },
+    // { id: 5, title: 'О нас', path: '/about' },
 ]
 
 function BookmarkIcon() {
