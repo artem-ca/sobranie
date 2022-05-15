@@ -6,16 +6,16 @@ import { NavItems } from './Header'
 export default function Footer() {
     return (
         <>
-            <div class='w-full p-20 bg-strict-black text-pale-white dark:border-t-2 border-pale-white/40'>
-                <div className='max-w-lg flex flex-wrap m-auto gap-x-40 gap-y-10 justify-evenly'>
-                    <span className='flex m-auto text-pale-white text-3xl'>
+            <div class='w-full border-pale-white/40 bg-strict-black p-20 text-pale-white dark:border-t-2'>
+                <div className='m-auto flex max-w-lg flex-wrap justify-evenly gap-x-40 gap-y-10'>
+                    <span className='m-auto flex text-3xl text-pale-white'>
                         Sobranie.
                     </span>
 
                     <div class='flex  space-x-10'>
                         <a href='https://github.com/artem-ca/' passHref>
                             <svg
-                                class='hover:opacity-75 cursor-pointer'
+                                class='cursor-pointer hover:opacity-75'
                                 width='35'
                                 height='35'
                                 viewBox='0 0 24 24'
@@ -31,7 +31,7 @@ export default function Footer() {
 
                         <a href='https://telegram.org/' passHref>
                             <svg
-                                class='hover:opacity-75 cursor-pointer'
+                                class='cursor-pointer hover:opacity-75'
                                 width='35'
                                 height='35'
                                 viewBox='0 0 22 20'
@@ -47,7 +47,7 @@ export default function Footer() {
 
                         <a href='https://vk.com' passHref>
                             <svg
-                                class='hover:opacity-75 cursor-pointer'
+                                class='cursor-pointer hover:opacity-75'
                                 width='35'
                                 height='35'
                                 viewBox='0 0 22 22'
@@ -63,7 +63,7 @@ export default function Footer() {
 
                         <a href='https://www.youtube.com/' passHref>
                             <svg
-                                class='hover:opacity-75 cursor-pointer'
+                                class='cursor-pointer hover:opacity-75'
                                 width='35'
                                 height='35'
                                 viewBox='0 0 24 24'
@@ -78,7 +78,7 @@ export default function Footer() {
                         </a>
                     </div>
 
-                    <div class='h-20 text-lg font-montserrat'>
+                    <div class='h-20 font-montserrat text-lg'>
                         <div class='opacity-95'>
                             <p>
                                 <a href='mailto:turfirma@gmail.com?' passHref>
@@ -86,7 +86,7 @@ export default function Footer() {
                                 </a>
                             </p>
                         </div>
-                        <div class='mt-1.5 text-base font-montserrat opacity-80'>
+                        <div class='mt-1.5 font-montserrat text-base opacity-80'>
                             <p>Екатеринбург,</p>
                             <p>Россия.</p>
                         </div>
@@ -96,7 +96,7 @@ export default function Footer() {
                         <NavItems />
                     </ul>
                 </div>
-                <p class='mt-16 text-xs opacity-75 m-auto flex w-max'>
+                <p class='m-auto mt-16 flex w-max text-xs opacity-75'>
                     © Sobranie 2022.
                 </p>
             </div>

@@ -18,10 +18,10 @@ function MyApp({ Component, pageProps }) {
 
             <main className='flex px-2 '>
                 <div
-                    className='w-full m-auto flex rounded-3xl pb-16 bg-pale-white text-strange-black
-                            dark:bg-strict-black  dark:text-pale-white  border-pale-white/50'
+                    className='m-auto flex w-full rounded-3xl border-pale-white/50 bg-pale-white pb-16
+                            text-slate-900  dark:bg-strict-black  dark:text-pale-white'
                 >
-                    <div className='max-w-8xl w-full m-auto min-h-screen font-montserrat'>
+                    <div className='m-auto min-h-screen w-full max-w-8xl font-montserrat'>
                         <div className=' min-h-screen w-full rounded-3xl px-3'>
                             <Component {...pageProps} />
                         </div>

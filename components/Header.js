@@ -13,7 +13,7 @@ import { ThemeToggle } from './ThemeToggle'
 const navigation = [
     { id: 1, title: 'Глоссарий', path: '/glossary' },
     { id: 2, title: 'Журнал', path: '/journal' },
-    { id: 3, title: 'Курсы', path: '/courses' },
+    // { id: 3, title: 'Курсы', path: '/courses' },
     { id: 4, title: 'Магазин', path: '/shop' },
     // { id: 5, title: 'О нас', path: '/about' },
 ]
@@ -22,7 +22,7 @@ function BookmarkIcon() {
     return (
         <svg
             xmlns='http://www.w3.org/2000/svg'
-            class='h-5 w-5 hover:fill-pale-white cursor-pointer'
+            class='h-5 w-5 cursor-pointer hover:fill-pale-white'
             fill='none'
             viewBox='0 0 24 24'
             stroke='currentColor'
@@ -70,7 +70,7 @@ export function NavItems() {
                             className={
                                 '/' + pathname.split('/')[1] === path
                                     ? 'text-orange-300'
-                                    : 'hover:text-orange-300 transition duration-300 delay-5 ease-in-out'
+                                    : 'transition delay-5 duration-300 ease-in-out hover:text-orange-300'
                             }
                         >
                             {title}
@@ -100,7 +100,7 @@ export function NavPopover({ display = 'md:hidden', className, ...props }) {
         <div className={clsx(className, display)} {...props}>
             <button
                 type='button'
-                className='flex w-8 h-8 items-center justify-center text-pale-white hover:text-pale-white/80'
+                className='flex h-8 w-8 items-center justify-center text-pale-white hover:text-pale-white/80'
                 onClick={() => setIsOpen(true)}
             >
                 <span className='sr-only'>Navigation</span>
@@ -122,11 +122,11 @@ export function NavPopover({ display = 'md:hidden', className, ...props }) {
             <Transition as={Fragment} show={isOpen}>
                 <Dialog
                     as='div'
-                    className={clsx('fixed z-50 inset-0', display)}
+                    className={clsx('fixed inset-0 z-50', display)}
                     open={isOpen}
                     onClose={setIsOpen}
                 >
-                    <Dialog.Overlay className='fixed inset-0 backdrop-blur-sm bg-black/10' />
+                    <Dialog.Overlay className='fixed inset-0 bg-black/10 backdrop-blur-sm' />
 
                     <Transition.Child
                         enter='transition ease-out duration-100'
@@ -137,14 +137,14 @@ export function NavPopover({ display = 'md:hidden', className, ...props }) {
                         leaveTo='opacity-0 translate-y-1'
                     >
                         <div
-                            className='fixed top-5 right-7 max-w-xs w-full rounded-lg shadow-lg p-6 text-base font-semibold 
-                  bg-strict-black text-pale-white dark:border-2 border-pale-white/50'
+                            className='fixed top-5 right-7 w-full max-w-xs rounded-lg border-pale-white/50 bg-strict-black p-6 text-base 
+                  font-semibold text-pale-white shadow-lg dark:border-2'
                         >
                             <button
                                 type='button'
-                                className='absolute top-4 right-4 w-9 h-9 flex items-center justify-center 
-                                   hover:text-pale-white/80
-                                   duration-500 delay-100 ease-in-out hover:rotate-90 active:scale-90'
+                                className='absolute top-4 right-4 flex h-9 w-9 items-center justify-center 
+                                   delay-100
+                                   duration-500 ease-in-out hover:rotate-90 hover:text-pale-white/80 active:scale-90'
                                 onClick={() => setIsOpen(false)}
                             >
                                 <span className='sr-only'>
@@ -165,11 +165,11 @@ export function NavPopover({ display = 'md:hidden', className, ...props }) {
                                     />
                                 </svg>
                             </button>
-                            <ul className='space-y-6 pb-6 border-b border-pale-white/70'>
+                            <ul className='space-y-6 border-b border-pale-white/70 pb-6'>
                                 <NavItems />
                             </ul>
 
-                            <div className='flex items-center justify-between mx-auto gap-x-10 pt-6 w-max font-normal text-pale-white/80'>
+                            <div className='mx-auto flex w-max items-center justify-between gap-x-10 pt-6 font-normal text-pale-white/80'>
                                 <ProfileIcon />
                                 <BookmarkIcon />
                                 <ThemeToggle />
@@ -204,18 +204,18 @@ export default function Header() {
     return (
         <section
             className={clsx(
-                'sticky top-0 z-40 w-full flex-none lg:z-50 dark:border-b backdrop-blur transition-colors duration-700',
+                'sticky top-0 z-40 w-full flex-none border-pale-white/70 backdrop-blur transition-colors duration-700 dark:border-b lg:z-50',
                 isOpaque
-                    ? 'bg-strict-black/90 supports-backdrop-blur:bg-strict-black/10 dark:bg-strange-black/75'
-                    : 'bg-strict-black supports-backdrop-blur:bg-strict-black/60 dark:bg-transparent'
+                    ? 'supports-backdrop-blur:bg-strict-black/10 bg-strict-black/90 dark:bg-strange-black/75'
+                    : 'supports-backdrop-blur:bg-strict-black/60 bg-strict-black dark:bg-transparent'
             )}
         >
-            <div className='flex-none text-pale-white font-bold max-w-8xl mx-auto w-full'>
+            <div className='mx-auto w-full max-w-8xl flex-none font-bold text-pale-white'>
                 <div className='py-4 px-6 sm:px-8'>
                     <div className='relative flex items-center'>
                         <Link href='/' passHref>
                             <a
-                                className='font-display mr-3 pl-1 hover:text-rose-600 transition duration-300 delay-5 ease-in-out'
+                                className='mr-3 pl-1 font-display transition delay-5 duration-300 ease-in-out hover:text-rose-600'
                                 onContextMenu={(e) => {
                                     e.preventDefault()
                                     Router.push('/')
@@ -228,20 +228,20 @@ export default function Header() {
                             </a>
                         </Link>
 
-                        <div className='relative hidden md:flex items-center ml-auto'>
+                        <div className='relative ml-auto hidden items-center md:flex'>
                             <nav className='leading-6'>
                                 <ul className='flex gap-x-6 '>
                                     <NavItems />
                                 </ul>
                             </nav>
 
-                            <div className='flex gap-x-3 items-center border-l border-pale-white/60 ml-6 pl-5'>
+                            <div className='ml-6 flex items-center gap-x-3 border-l border-pale-white/60 pl-5'>
                                 <ThemeToggle panelClassName='mt-7' />
 
                                 <Link href='/profile/bookmarks' passHref>
                                     <button
                                         type='button'
-                                        className='w-8 h-8 -my-1 flex items-center justify-center'
+                                        className='-my-1 flex h-8 w-8 items-center justify-center'
                                     >
                                         <span className='sr-only'>
                                             Bookmarks
@@ -253,7 +253,7 @@ export default function Header() {
                                 <Link href='/profile' passHref>
                                     <button
                                         type='button'
-                                        className='w-8 h-8 -my-1 flex items-center justify-center hover:text-slate-300'
+                                        className='-my-1 flex h-8 w-8 items-center justify-center hover:text-slate-300'
                                     >
                                         <span className='sr-only'>Profile</span>
                                         <ProfileIcon />

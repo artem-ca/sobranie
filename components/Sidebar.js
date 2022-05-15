@@ -2,9 +2,9 @@ import Link from 'next/link'
 
 export default function Sidebar() {
     return (
-        <section className='min-h-full max-h-screen bg-black text-pale-white '>
+        <section className='max-h-screen min-h-full bg-black text-pale-white '>
             <div>
-                <ul className='p-16 space-y-3'>
+                <ul className='space-y-3 p-16'>
                     <li>lalalala</li>
                     <li>lalalala</li>
                     <li>lalalala</li>
