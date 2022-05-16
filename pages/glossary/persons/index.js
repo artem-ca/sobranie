@@ -8,22 +8,12 @@ import { sortByDate } from '../../../utils'
 import PersonCard from '../../../components/PersonCard'
 import BackButton from '../../../components/BackButton'
 
-// export async function TsarsList() {
-//     return (
-//         <div className='flex flex-wrap justify-evenly gap-10'>
-//             {posts.map((post, index) => (
-//                 <PersonCard key={index} post={post} />
-//             ))}
-//         </div>
-//     )
-// }
-
 export default function Persons({ posts }) {
     return (
         <section className='mx-auto'>
             <BackButton />
 
-            <div className='text-center text-3xl font-bold'>Цари</div>
+            <div className='text-center text-3xl font-bold'>Императоры</div>
 
             <div className='m-auto mt-12 max-w-5xl'>
                 <div className='flex flex-wrap justify-evenly gap-10'>
@@ -31,8 +21,6 @@ export default function Persons({ posts }) {
                         <PersonCard key={index} post={post} />
                     ))}
                 </div>
-
-                {/* <TsarsList /> */}
             </div>
         </section>
     )
@@ -40,7 +28,7 @@ export default function Persons({ posts }) {
 
 export async function getStaticProps() {
     // Get files from the post dir
-    const files = fs.readdirSync(path.join('posts/tsars'))
+    const files = fs.readdirSync(path.join('posts/emperors'))
 
     // Get slug and frontmatter from posts
     const posts = files.map((filename) => {
@@ -49,7 +37,7 @@ export async function getStaticProps() {
 
         // Get frontmatter
         const markdownWithMetadata = fs.readFileSync(
-            path.join('posts/tsars', filename),
+            path.join('posts/emperors', filename),
             'utf-8'
         )
 
