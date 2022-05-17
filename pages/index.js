@@ -1,14 +1,19 @@
 import Head from 'next/head'
 
-export default function Home({ posts }) {
+import { initializeApp } from 'firebase/app'
+import { getFirestore, collection, getDocs, doc } from 'firebase/firestore'
+import 'firebase/firestore'
+import PersonCard from '../components/PersonCard'
+
+export default function Home({}) {
     return (
-        <>
-            <p
-                className='mt-20 w-max m-auto items-center justify-center content-center text-4xl font-semibold h-full
-             align-middle '
+        <main className='mx-auto max-w-5xl'>
+            <div
+                className='m-auto mt-20 h-full w-max content-center items-center justify-center align-middle text-4xl
+                font-semibold '
             >
                 Sobranie.
-            </p>
-        </>
+            </div>
+        </main>
     )
 }
