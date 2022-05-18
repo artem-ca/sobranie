@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import initFirebase from '../firebase/initFirebase'
 
 export default function PersonCard({ post }) {
     return (

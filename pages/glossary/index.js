@@ -10,12 +10,39 @@ import PersonCard from '../../components/PersonCard'
 import RaceCard from '../../components/RaceCard'
 import EthnicCard from '../../components/EthnicCard'
 
+import { initializeApp } from 'firebase/app'
+import {
+    getFirestore,
+    collection,
+    getDocs,
+    doc,
+    query,
+} from 'firebase/firestore'
+import 'firebase/firestore'
+
+import initFirebase from '../../firebase/initFirebase'
+import { async } from '@firebase/util'
+
 const categories = [
     { id: 1, title: 'Личности', path: '/glossary/persons' },
     { id: 2, title: 'Этносы', path: '/glossary/ethnics' },
     { id: 3, title: 'Расы', path: '/glossary/races' },
     { id: 4, title: 'Слова', path: '/glossary/words' },
 ]
+
+const firebaseConfig = {
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+    measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
+}
+
+const app = initializeApp(firebaseConfig)
+const db = getFirestore(app)
 
 export function GlossaryCategories() {
     return (
@@ -118,7 +145,7 @@ export default function Glossary({ emperors, races, ethnics }) {
 }
 
 export async function getStaticProps() {
-    const emperorsFiles = fs.readdirSync(path.join('posts/emperors'))
+    const emperorsFiles = fs.readdirSync(path.join('posts/rulers/emperors'))
     const racesFiles = fs.readdirSync(path.join('posts/races'))
     const ethnicsFiles = fs.readdirSync(path.join('posts/ethnics'))
 
@@ -126,7 +153,7 @@ export async function getStaticProps() {
         const slug = filename.replace('.mdx', '')
 
         const markdownWithMetadata = fs.readFileSync(
-            path.join('posts/emperors', filename),
+            path.join('posts/rulers/emperors', filename),
             'utf-8'
         )
 

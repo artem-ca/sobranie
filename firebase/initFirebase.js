@@ -1,5 +1,11 @@
 import { initializeApp, firebase } from 'firebase/app'
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite'
+import {
+    getFirestore,
+    collection,
+    getDocs,
+    query,
+    where,
+} from 'firebase/firestore/lite'
 import 'firebase/firestore'
 import 'firebase/auth'
 import 'firebase/firestore'
@@ -7,7 +13,7 @@ import 'firebase/storage'
 import 'firebase/analytics'
 import 'firebase/performance'
 
-const clientCredentials = {
+const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
     authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
     databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
@@ -22,17 +28,11 @@ const clientCredentials = {
 const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
 
-export default function initFirebase() {
-    if (!firebase.apps.length) {
-        firebase.initializeApp(clientCredentials)
-        // Check that `window` is in scope for the analytics module!
-        if (typeof window !== 'undefined') {
-            // Enable analytics. https://firebase.google.com/docs/analytics/get-started
-            if ('measurementId' in clientCredentials) {
-                firebase.analytics()
-                firebase.performance()
-            }
-        }
-        console.log('Firebase was successfully init.')
-    }
+export default async function initFirebase() {
+    const q = query(collection(db, 'Persons'))
+
+    const querySnapshot = await getDocs(q)
+    querySnapshot.forEach((doc) => {
+        console.log(doc.id, ' => ', doc.data().nickname)
+    })
 }

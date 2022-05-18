@@ -1,10 +1,5 @@
 import Head from 'next/head'
 
-import { initializeApp } from 'firebase/app'
-import { getFirestore, collection, getDocs, doc } from 'firebase/firestore'
-import 'firebase/firestore'
-import PersonCard from '../components/PersonCard'
-
 export default function Home({}) {
     return (
         <main className='mx-auto max-w-5xl'>

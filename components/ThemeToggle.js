@@ -48,7 +48,7 @@ function SunIcon({ selected, ...props }) {
     return (
         <svg
             xmlns='http://www.w3.org/2000/svg'
-            className='h-6 w-6 delay-75 duration-500 ease-in-out hover:rotate-90 active:scale-110'
+            class='h-6 w-6 delay-75 duration-500 ease-in-out hover:rotate-90 active:scale-110'
             fill='none'
             viewBox='0 0 24 24'
             stroke='currentColor'
@@ -69,7 +69,7 @@ function MoonIcon({ selected, ...props }) {
     return (
         <svg
             xmlns='http://www.w3.org/2000/svg'
-            className='h-6 w-6 delay-75 duration-500 ease-in-out hover:rotate-45 hover:scale-90 active:scale-75'
+            class='h-6 w-6 delay-75 duration-500 ease-in-out hover:rotate-45 hover:scale-90 active:scale-75'
             fill='none'
             viewBox='0 0 24 24'
             stroke='currentColor'
@@ -90,7 +90,7 @@ function PcIcon({ selected, ...props }) {
     return (
         <svg
             xmlns='http://www.w3.org/2000/svg'
-            className='h-6 w-6'
+            class='h-6 w-6'
             fill='none'
             viewBox='0 0 24 24'
             stroke='currentColor'

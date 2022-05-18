@@ -206,7 +206,7 @@ export default function Header() {
             className={clsx(
                 'sticky top-0 z-40 w-full flex-none border-pale-white/70 backdrop-blur transition-colors duration-700 dark:border-b lg:z-50',
                 isOpaque
-                    ? 'supports-backdrop-blur:bg-strict-black/10 bg-strict-black/90 dark:bg-strange-black/75'
+                    ? 'supports-backdrop-blur:bg-strict-black/10 bg-strict-black/90 shadow-lg dark:bg-strange-black/75'
                     : 'supports-backdrop-blur:bg-strict-black/60 bg-strict-black dark:bg-transparent'
             )}
         >
