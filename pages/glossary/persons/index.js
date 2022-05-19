@@ -16,7 +16,7 @@ const rulerTitles = [
     { id: 3, title: 'Короли', path: '/glossary/races' },
 ]
 
-export default function Persons({ posts }) {
+export default function Persons({ emperors, tsars }) {
     var { pathname } = useRouter()
     const paths = pathname.split('/')
     console.log(paths)
@@ -29,7 +29,17 @@ export default function Persons({ posts }) {
 
             <div className='m-auto mt-12 max-w-5xl'>
                 <div className='flex flex-wrap justify-evenly gap-10'>
-                    {posts.map((post, index) => (
+                    {emperors.map((post, index) => (
+                        <PersonCard key={index} post={post} />
+                    ))}
+                </div>
+            </div>
+
+            <div className='mt-10 text-center text-3xl font-bold'>Цари</div>
+
+            <div className='m-auto mt-12 max-w-5xl'>
+                <div className='flex flex-wrap justify-evenly gap-10'>
+                    {tsars.map((post, index) => (
                         <PersonCard key={index} post={post} />
                     ))}
                 </div>
@@ -40,10 +50,11 @@ export default function Persons({ posts }) {
 
 export async function getStaticProps() {
     // Get files from the post dir
-    const files = fs.readdirSync(path.join('posts/rulers/emperors'))
+    const emperorsFiles = fs.readdirSync(path.join('posts/rulers/emperors'))
+    const tsarsFiles = fs.readdirSync(path.join('posts/rulers/tsars'))
 
     // Get slug and frontmatter from posts
-    const posts = files.map((filename) => {
+    const emperors = emperorsFiles.map((filename) => {
         // Create slug
         const slug = filename.replace('.mdx', '')
 
@@ -61,9 +72,28 @@ export async function getStaticProps() {
         }
     })
 
+    const tsars = tsarsFiles.map((filename) => {
+        // Create slug
+        const slug = filename.replace('.mdx', '')
+
+        // Get frontmatter
+        const markdownWithMetadata = fs.readFileSync(
+            path.join('posts/rulers/tsars', filename),
+            'utf-8'
+        )
+
+        const { data: frontmatter } = matter(markdownWithMetadata)
+
+        return {
+            slug,
+            frontmatter,
+        }
+    })
+
     return {
         props: {
-            posts: posts.sort(sortByDate),
+            emperors: emperors.sort(sortByDate),
+            tsars: tsars,
         },
     }
 }

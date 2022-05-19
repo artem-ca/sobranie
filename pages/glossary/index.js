@@ -22,6 +22,7 @@ import 'firebase/firestore'
 
 import initFirebase from '../../firebase/initFirebase'
 import { async } from '@firebase/util'
+import SearchButton from '../../components/SearchButton'
 
 const categories = [
     { id: 1, title: 'Личности', path: '/glossary/persons' },
@@ -70,8 +71,8 @@ export function ToCategoryButton({ link, title }) {
         <Link href={link} passHref>
             <a
                 className='group m-auto mb-4 flex  w-full cursor-pointer items-center rounded-md py-2 
-                        px-3 font-semibold transition delay-5 duration-300 ease-in-out 
-                        hover:shadow-md dark:hover:bg-slate-200/10 dark:hover:text-orange-300'
+                        px-3 font-semibold transition delay-5 duration-300 
+                        ease-in-out hover:shadow-md dark:hover:bg-slate-200/10 dark:hover:text-orange-300'
             >
                 {title}
                 <svg
@@ -94,6 +95,7 @@ export function ToCategoryButton({ link, title }) {
 }
 
 export default function Glossary({ emperors, races, ethnics }) {
+    initFirebase()
     return (
         <main className='mx-auto max-w-5xl'>
             <header className='py-16 text-center'>
@@ -104,6 +106,7 @@ export default function Glossary({ emperors, races, ethnics }) {
                     Энциклопедия, которую ты заслужил.
                 </p>
                 <GlossaryCategories />
+                <SearchButton />
             </header>
 
             <div className='space-y-7'>

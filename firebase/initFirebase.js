@@ -12,6 +12,7 @@ import 'firebase/firestore'
 import 'firebase/storage'
 import 'firebase/analytics'
 import 'firebase/performance'
+import { doc } from 'firebase/firestore'
 
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -35,4 +36,13 @@ export default async function initFirebase() {
     querySnapshot.forEach((doc) => {
         console.log(doc.id, ' => ', doc.data().nickname)
     })
+    return (
+        <p>
+            {querySnapshot.forEach((doc) => {
+                {
+                    doc.data().nickname
+                }
+            })}
+        </p>
+    )
 }

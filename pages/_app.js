@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
 
             <Header />
 
-            <main className='flex px-2 '>
+            <main className='flex'>
                 <div
                     className='m-auto flex w-full rounded-3xl border-pale-white/50 bg-pale-white pb-16
                             text-slate-900  dark:bg-strict-black  dark:text-pale-white'
