@@ -29,20 +29,22 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
 
-export default async function initFirebase() {
-    const q = query(collection(db, 'Persons'))
+export { db }
 
-    const querySnapshot = await getDocs(q)
-    querySnapshot.forEach((doc) => {
-        console.log(doc.id, ' => ', doc.data().nickname)
-    })
-    return (
-        <p>
-            {querySnapshot.forEach((doc) => {
-                {
-                    doc.data().nickname
-                }
-            })}
-        </p>
-    )
-}
+// export default async function initFirebase() {
+//     const q = query(collection(db, 'Persons'))
+
+//     const querySnapshot = await getDocs(q)
+//     querySnapshot.forEach((doc) => {
+//         console.log(doc.id, ' => ', doc.data().nickname)
+//     })
+//     return (
+//         <p>
+//             {querySnapshot.forEach((doc) => {
+//                 {
+//                     doc.data().nickname
+//                 }
+//             })}
+//         </p>
+//     )
+// }

@@ -6,9 +6,24 @@ import { useRouter } from 'next/router'
 
 import Link from 'next/link'
 
+import { useCollection } from 'react-firebase-hooks/firestore'
+import {
+    getFirestore,
+    collection,
+    doc,
+    orderBy,
+    onSnapshot,
+    QuerySnapshot,
+    query,
+} from 'firebase/firestore'
+import { initializeApp, firebase } from 'firebase/app'
+
+import { useEffect, useState } from 'react'
+
 import { sortByDate } from '../../../utils'
 import PersonCard from '../../../components/PersonCard'
 import BackButton from '../../../components/BackButton'
+import PesronsList from '../../../components/PersonsList'
 
 const rulerTitles = [
     { id: 1, title: 'Императоры', path: '/glossary/persons' },
@@ -19,7 +34,7 @@ const rulerTitles = [
 export default function Persons({ emperors, tsars }) {
     var { pathname } = useRouter()
     const paths = pathname.split('/')
-    console.log(paths)
+    // console.log(paths)
 
     return (
         <section className='mx-auto'>
@@ -28,6 +43,7 @@ export default function Persons({ emperors, tsars }) {
             <div className='text-center text-3xl font-bold'>Императоры</div>
 
             <div className='m-auto mt-12 max-w-5xl'>
+                <PesronsList />
                 <div className='flex flex-wrap justify-evenly gap-10'>
                     {emperors.map((post, index) => (
                         <PersonCard key={index} post={post} />
@@ -50,35 +66,16 @@ export default function Persons({ emperors, tsars }) {
 
 export async function getStaticProps() {
     // Get files from the post dir
-    const emperorsFiles = fs.readdirSync(path.join('posts/rulers/emperors'))
-    const tsarsFiles = fs.readdirSync(path.join('posts/rulers/tsars'))
+    const rulersFiles = fs.readdirSync(path.join('posts/rulers'))
 
     // Get slug and frontmatter from posts
-    const emperors = emperorsFiles.map((filename) => {
+    const rulers = rulersFiles.map((filename) => {
         // Create slug
         const slug = filename.replace('.mdx', '')
 
         // Get frontmatter
         const markdownWithMetadata = fs.readFileSync(
-            path.join('posts/rulers/emperors', filename),
-            'utf-8'
-        )
-
-        const { data: frontmatter } = matter(markdownWithMetadata)
-
-        return {
-            slug,
-            frontmatter,
-        }
-    })
-
-    const tsars = tsarsFiles.map((filename) => {
-        // Create slug
-        const slug = filename.replace('.mdx', '')
-
-        // Get frontmatter
-        const markdownWithMetadata = fs.readFileSync(
-            path.join('posts/rulers/tsars', filename),
+            path.join('posts/rulers', filename),
             'utf-8'
         )
 
@@ -92,8 +89,12 @@ export async function getStaticProps() {
 
     return {
         props: {
-            emperors: emperors.sort(sortByDate),
-            tsars: tsars,
+            emperors: rulers.filter(
+                (emperor) => emperor.frontmatter.rulerTitle === 'Император'
+            ),
+            tsars: rulers.filter(
+                (emperor) => emperor.frontmatter.rulerTitle === 'Царь'
+            ),
         },
     }
 }

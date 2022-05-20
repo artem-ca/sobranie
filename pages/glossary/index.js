@@ -23,6 +23,7 @@ import 'firebase/firestore'
 import initFirebase from '../../firebase/initFirebase'
 import { async } from '@firebase/util'
 import SearchButton from '../../components/SearchButton'
+import PesronsList from '../../components/PersonsList'
 
 const categories = [
     { id: 1, title: 'Личности', path: '/glossary/persons' },
@@ -95,13 +96,13 @@ export function ToCategoryButton({ link, title }) {
 }
 
 export default function Glossary({ emperors, races, ethnics }) {
-    initFirebase()
     return (
         <main className='mx-auto max-w-5xl'>
             <header className='py-16 text-center'>
                 <h1 className='mb-4 text-center font-display text-4xl font-bold sm:text-5xl'>
                     Глоссарий
                 </h1>
+
                 <p className='mb-7 tracking-wide text-slate-700 first-line:text-lg dark:text-pale-white/90'>
                     Энциклопедия, которую ты заслужил.
                 </p>
@@ -115,6 +116,8 @@ export default function Glossary({ emperors, races, ethnics }) {
                         link='glossary/persons'
                         title='Правители'
                     />
+
+                    <PesronsList />
 
                     <div className='flex flex-wrap justify-evenly gap-10'>
                         {emperors.slice(0, 5).map((post, index) => (
@@ -148,7 +151,7 @@ export default function Glossary({ emperors, races, ethnics }) {
 }
 
 export async function getStaticProps() {
-    const emperorsFiles = fs.readdirSync(path.join('posts/rulers/emperors'))
+    const emperorsFiles = fs.readdirSync(path.join('posts/rulers'))
     const racesFiles = fs.readdirSync(path.join('posts/races'))
     const ethnicsFiles = fs.readdirSync(path.join('posts/ethnics'))
 
@@ -156,7 +159,7 @@ export async function getStaticProps() {
         const slug = filename.replace('.mdx', '')
 
         const markdownWithMetadata = fs.readFileSync(
-            path.join('posts/rulers/emperors', filename),
+            path.join('posts/rulers', filename),
             'utf-8'
         )
 
