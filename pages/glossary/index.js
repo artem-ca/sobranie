@@ -5,8 +5,6 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
-import { sortByDate } from '../../utils'
-import PersonCard from '../../components/PersonCard'
 import RaceCard from '../../components/RaceCard'
 import EthnicCard from '../../components/EthnicCard'
 
@@ -20,8 +18,6 @@ import {
 } from 'firebase/firestore'
 import 'firebase/firestore'
 
-import initFirebase from '../../firebase/initFirebase'
-import { async } from '@firebase/util'
 import SearchButton from '../../components/SearchButton'
 import PesronsList from '../../components/PersonsList'
 
@@ -72,8 +68,8 @@ export function ToCategoryButton({ link, title }) {
         <Link href={link} passHref>
             <a
                 className='group m-auto mb-4 flex  w-full cursor-pointer items-center rounded-md py-2 
-                        px-3 font-semibold transition delay-5 duration-300 
-                        ease-in-out hover:shadow-md dark:hover:bg-slate-200/10 dark:hover:text-orange-300'
+                        px-3 font-semibold transition delay-5 duration-300 ease-in-out
+                        hover:shadow-md dark:hover:bg-slate-200/10 dark:hover:text-orange-300'
             >
                 {title}
                 <svg
@@ -95,7 +91,7 @@ export function ToCategoryButton({ link, title }) {
     )
 }
 
-export default function Glossary({ emperors, races, ethnics }) {
+export default function Glossary({ races, ethnics }) {
     return (
         <main className='mx-auto max-w-5xl'>
             <header className='py-16 text-center'>
@@ -117,13 +113,7 @@ export default function Glossary({ emperors, races, ethnics }) {
                         title='Правители'
                     />
 
-                    <PesronsList />
-
-                    <div className='flex flex-wrap justify-evenly gap-10'>
-                        {emperors.slice(0, 5).map((post, index) => (
-                            <PersonCard key={index} post={post} />
-                        ))}
-                    </div>
+                    <PesronsList rulerTitle='Император' limit={5} />
                 </div>
 
                 <div>
@@ -151,11 +141,11 @@ export default function Glossary({ emperors, races, ethnics }) {
 }
 
 export async function getStaticProps() {
-    const emperorsFiles = fs.readdirSync(path.join('posts/rulers'))
+    const rulersFiles = fs.readdirSync(path.join('posts/rulers'))
     const racesFiles = fs.readdirSync(path.join('posts/races'))
     const ethnicsFiles = fs.readdirSync(path.join('posts/ethnics'))
 
-    const emperors = emperorsFiles.map((filename) => {
+    const emperors = rulersFiles.map((filename) => {
         const slug = filename.replace('.mdx', '')
 
         const markdownWithMetadata = fs.readFileSync(

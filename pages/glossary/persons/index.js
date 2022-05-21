@@ -4,24 +4,6 @@ import path from 'path'
 import matter from 'gray-matter'
 import { useRouter } from 'next/router'
 
-import Link from 'next/link'
-
-import { useCollection } from 'react-firebase-hooks/firestore'
-import {
-    getFirestore,
-    collection,
-    doc,
-    orderBy,
-    onSnapshot,
-    QuerySnapshot,
-    query,
-} from 'firebase/firestore'
-import { initializeApp, firebase } from 'firebase/app'
-
-import { useEffect, useState } from 'react'
-
-import { sortByDate } from '../../../utils'
-import PersonCard from '../../../components/PersonCard'
 import BackButton from '../../../components/BackButton'
 import PesronsList from '../../../components/PersonsList'
 
@@ -40,25 +22,18 @@ export default function Persons({ emperors, tsars }) {
         <section className='mx-auto'>
             <BackButton />
 
-            <div className='text-center text-3xl font-bold'>Императоры</div>
+            <h1 className='text-center text-2xl font-bold sm:text-3xl'>
+                Императоры
+            </h1>
 
             <div className='m-auto mt-12 max-w-5xl'>
-                <PesronsList />
-                <div className='flex flex-wrap justify-evenly gap-10'>
-                    {emperors.map((post, index) => (
-                        <PersonCard key={index} post={post} />
-                    ))}
-                </div>
+                <PesronsList rulerTitle='Император' />
             </div>
 
             <div className='mt-10 text-center text-3xl font-bold'>Цари</div>
 
             <div className='m-auto mt-12 max-w-5xl'>
-                <div className='flex flex-wrap justify-evenly gap-10'>
-                    {tsars.map((post, index) => (
-                        <PersonCard key={index} post={post} />
-                    ))}
-                </div>
+                <PesronsList rulerTitle='Царь' />
             </div>
         </section>
     )
