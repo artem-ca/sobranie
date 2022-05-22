@@ -6,34 +6,37 @@ import { useRouter } from 'next/router'
 
 import BackButton from '../../../components/BackButton'
 import PesronsList from '../../../components/PersonsList'
+import RulersOptions, {
+    SelectRulerTitle,
+} from '../../../components/RulersOptions'
 
-const rulerTitles = [
-    { id: 1, title: 'Императоры', path: '/glossary/persons' },
-    { id: 2, title: 'Цари', path: '/glossary/ethnics' },
-    { id: 3, title: 'Короли', path: '/glossary/races' },
-]
+//TODO : РЕАЛИЗОВАТЬ!!!
+
+export var selectedRulerTitle = ''
 
 export default function Persons({ emperors, tsars }) {
-    var { pathname } = useRouter()
-    const paths = pathname.split('/')
+    // var { pathname } = useRouter()
+    // const paths = pathname.split('/')
     // console.log(paths)
 
     return (
         <section className='mx-auto'>
             <BackButton />
 
-            <h1 className='text-center text-2xl font-bold sm:text-3xl'>
-                Императоры
-            </h1>
+            <h2 className='text-center text-2xl font-bold sm:text-3xl'>
+                Правители
+            </h2>
 
-            <div className='m-auto mt-12 max-w-5xl'>
-                <PesronsList rulerTitle='Император' />
+            <div className='m-auto mt-10 max-w-5xl'>
+                <RulersOptions />
+                {console.log(selectedRulerTitle)}
+                {/* <PesronsList rulerTitle='Император' /> */}
             </div>
 
-            <div className='mt-10 text-center text-3xl font-bold'>Цари</div>
+            <h2 className='mt-10 text-center text-3xl font-bold'>Цари</h2>
 
             <div className='m-auto mt-12 max-w-5xl'>
-                <PesronsList rulerTitle='Царь' />
+                <PesronsList rulerTitle='Царь' country='' />
             </div>
         </section>
     )

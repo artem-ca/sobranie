@@ -107,13 +107,13 @@ export default function Glossary({ races, ethnics }) {
             </header>
 
             <div className='space-y-7'>
-                <div className=''>
+                <div className='h-56'>
                     <ToCategoryButton
                         link='glossary/persons'
                         title='Правители'
                     />
 
-                    <PesronsList rulerTitle='Император' limit={5} />
+                    {/* <PesronsList rulerTitle='Император' limit={5} /> */}
                 </div>
 
                 <div>

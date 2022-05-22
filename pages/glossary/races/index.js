@@ -5,7 +5,6 @@ import matter from 'gray-matter'
 import { useRouter } from 'next/router'
 
 import { sortByDate } from '../../../utils'
-import PersonCard from '../../../components/PersonCard'
 import RaceCard from '../../../components/RaceCard'
 import BackButton from '../../../components/BackButton'
 

@@ -12,6 +12,7 @@ import { initializeApp, firebase } from 'firebase/app'
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { sortByNickname } from '../utils'
 
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -72,7 +73,7 @@ export function PersonCard({ person }) {
     )
 }
 
-export default function PesronsList({ rulerTitle, limit }) {
+export default function PesronsList({ rulerTitle, limit, country, category }) {
     const [persons, setPersons] = useState([])
 
     useEffect(() => {
@@ -95,15 +96,9 @@ export default function PesronsList({ rulerTitle, limit }) {
     return (
         <section className='flex flex-wrap justify-evenly gap-10'>
             {persons
-                .sort((a, b) => {
-                    if (a.nickname > b.nickname) {
-                        return 1
-                    }
-                    if (a.nickname < b.nickname) {
-                        return -1
-                    }
-                })
+                .sort(sortByNickname)
                 .filter((emperor) => emperor.rulerTitle === rulerTitle)
+                .filter((emperor) => emperor.country === country)
                 .slice(0, limit)
                 .map((person) => (
                     <PersonCard person={person} />
