@@ -42,7 +42,15 @@ export default function Journal() {
                 <JournalCategories />
             </header>
             <Image
-                className=' absolute mx-auto rounded-3xl'
+                className='absolute mx-auto rounded-3xl'
+                src='/../public/canaletto_canal.jpg'
+                alt='Picture of the author'
+                layout='responsive'
+                width={1200}
+                height={857}
+            />
+            <Image
+                className='absolute mx-auto rounded-3xl'
                 src='/../public/Jan_Pieter_van_Bredael_(II)_-_Winter.jpg'
                 alt='Picture of the author'
                 layout='responsive'

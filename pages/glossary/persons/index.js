@@ -8,11 +8,9 @@ import BackButton from '../../../components/BackButton'
 import PesronsList from '../../../components/PersonsList'
 import RulersOptions, {
     SelectRulerTitle,
+    TestCounter,
 } from '../../../components/RulersOptions'
-
-//TODO : РЕАЛИЗОВАТЬ!!!
-
-export var selectedRulerTitle = ''
+import { useState } from 'react'
 
 export default function Persons({ emperors, tsars }) {
     // var { pathname } = useRouter()
@@ -24,19 +22,14 @@ export default function Persons({ emperors, tsars }) {
             <BackButton />
 
             <h2 className='text-center text-2xl font-bold sm:text-3xl'>
-                Правители
+                Личности
             </h2>
 
             <div className='m-auto mt-10 max-w-5xl'>
                 <RulersOptions />
-                {console.log(selectedRulerTitle)}
+
+                <TestCounter />
                 {/* <PesronsList rulerTitle='Император' /> */}
-            </div>
-
-            <h2 className='mt-10 text-center text-3xl font-bold'>Цари</h2>
-
-            <div className='m-auto mt-12 max-w-5xl'>
-                <PesronsList rulerTitle='Царь' country='' />
             </div>
         </section>
     )

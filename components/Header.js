@@ -223,18 +223,18 @@ export default function Header() {
     return (
         <section
             className={clsx(
-                'sticky top-0 z-40 w-full flex-none border-pale-white/70 backdrop-blur transition-colors duration-700 dark:border-b lg:z-50',
+                'sticky top-0 z-40 w-full flex-none select-none border-pale-white/70 font-montserrat backdrop-blur transition-colors duration-700 dark:border-b lg:z-50',
                 isOpaque
                     ? 'supports-backdrop-blur:bg-strict-black/10 bg-strict-black/90 shadow-lg dark:bg-strange-black/75'
                     : 'supports-backdrop-blur:bg-strict-black/60 bg-strict-black dark:bg-transparent'
             )}
         >
-            <div className='mx-auto w-full max-w-8xl flex-none font-bold text-pale-white'>
+            <div className='mx-auto w-full max-w-8xl flex-none font-semibold text-pale-white'>
                 <div className='py-4 px-6 sm:px-8'>
                     <div className='relative flex items-center'>
                         <Link href='/' passHref>
                             <a
-                                className='mr-3 pl-1 font-display transition delay-5 duration-300 ease-in-out hover:text-rose-600'
+                                className='mr-3 pl-1 transition delay-5 duration-300 ease-in-out hover:text-rose-600'
                                 onContextMenu={(e) => {
                                     e.preventDefault()
                                     Router.push('/')

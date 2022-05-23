@@ -92,7 +92,7 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    <ul class='flex flex-col space-y-6 text-center sm:text-justify'>
+                    <ul class='flex flex-col space-y-6 text-center font-semibold sm:text-justify'>
                         <NavItems />
                     </ul>
                 </div>

@@ -49,10 +49,10 @@ export function GlossaryCategories() {
                 <li key={id}>
                     <Link key={id} href={path} passHref>
                         <a
-                            className='rounded-xl border-2 border-strict-black px-3 py-1 transition delay-5 duration-100
-                ease-in-out hover:bg-strict-black hover:text-pale-white
-                dark:border-pale-white/90 dark:text-pale-white dark:hover:bg-pale-white 
-                 dark:hover:text-strange-black'
+                            className='select-none rounded-xl border-2 border-strict-black px-3 py-1 transition delay-5
+                duration-100 ease-in-out hover:bg-strict-black
+                hover:text-pale-white dark:border-pale-white/90 dark:text-pale-white 
+                 dark:hover:bg-pale-white dark:hover:text-strange-black'
                         >
                             {title}
                         </a>
