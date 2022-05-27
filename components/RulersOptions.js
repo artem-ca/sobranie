@@ -1,63 +1,5 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
-
-const rulerTitles = [
-    { id: 1, title: 'Император', path: '/glossary/persons' },
-    { id: 2, title: 'Царь', path: '/glossary/ethnics' },
-    { id: 3, title: 'Король', path: '/glossary/races' },
-    { id: 3, title: 'Президент', path: '/glossary/races' },
-]
-
-const personCountries = [
-    { id: 1, title: 'Россия' },
-    { id: 2, title: 'Германия' },
-    { id: 3, title: 'Англия' },
-    { id: 4, title: 'Швеция' },
-    { id: 5, title: 'Дания' },
-    { id: 6, title: 'Франция' },
-    { id: 7, title: 'Польша' },
-    { id: 8, title: 'Италия' },
-]
-
-const personCategories = [
-    { id: 1, title: 'Правитель' },
-    { id: 2, title: 'Политик' },
-    { id: 3, title: 'Полководец' },
-    { id: 4, title: 'Художник' },
-    { id: 5, title: 'Писатель' },
-    { id: 6, title: 'Актёр' },
-    { id: 7, title: 'Учёный' },
-]
-
-export function TestCounter() {
-    // useState testing
-    const [count, setCount] = useState(1)
-    function inc() {
-        setCount(count + 1)
-    }
-    function dec() {
-        setCount(count - 1)
-    }
-    return (
-        <div className='my-10 mx-auto w-max  text-center'>
-            <h2 className='text-3xl'>{count}</h2>
-            <div className='m-auto flex select-none gap-x-3 text-lg'>
-                <button
-                    onClick={inc}
-                    className='flex w-max rounded-lg bg-blue-450 px-3 py-2 font-semibold hover:bg-blue-600'
-                >
-                    Inc +
-                </button>
-                <button
-                    onClick={dec}
-                    className='flex w-max rounded-lg bg-red-400 px-3 py-2 font-semibold hover:bg-red-500'
-                >
-                    Dec -
-                </button>
-            </div>
-        </div>
-    )
-}
 
 export function SelectorIcon() {
     return (
@@ -97,16 +39,47 @@ export function CheckIcon() {
     )
 }
 
-export function SelectOption({ options }) {
+export function TestCounter() {
+    const [count, setCount] = useState(0)
+    function inc() {
+        setCount(count + 1)
+    }
+    function dec() {
+        setCount(count - 1)
+    }
+    return (
+        <div className='my-10 mx-auto w-max text-center'>
+            <h2 className='text-3xl'>{count}</h2>
+            <div className='m-auto flex select-none items-center justify-center gap-x-3 text-center text-lg'>
+                <button
+                    onClick={dec}
+                    className='flex w-max rounded-lg bg-red-400 px-3 py-2 font-semibold hover:bg-red-500'
+                >
+                    Dec -
+                </button>
+                <button
+                    onClick={inc}
+                    className='flex w-max rounded-lg bg-blue-450 px-3 py-2 font-semibold hover:bg-blue-600'
+                >
+                    Inc +
+                </button>
+            </div>
+        </div>
+    )
+}
+
+export function SelectOption({ options, option, setOption }) {
     const [selected, setSelected] = useState(options[0])
 
+    setOption(selected.value)
+
     return (
-        <div className='mt-1 w-44 rounded-lg text-black ring-1 ring-strict-black  dark:text-pale-white dark:ring-0 '>
+        <div className='w-48 rounded-lg text-black ring-1 ring-strict-black  dark:text-pale-white dark:ring-0 '>
             <Listbox value={selected} onChange={setSelected}>
                 <div className='relative'>
                     <Listbox.Button
                         className='flex w-full cursor-pointer items-center rounded-lg 
-                                    bg-pale-white py-2 pl-3 pr-2 text-left text-sm shadow-md dark:bg-strict-black dark:ring-1 dark:ring-pale-white'
+                                    bg-white py-2 pl-3 pr-2 text-left text-sm shadow-md dark:bg-strict-black dark:ring-1 dark:ring-pale-white'
                     >
                         <span className='font-semibold'>{selected.title}</span>
                         <span className='ml-auto'>
@@ -126,16 +99,16 @@ export function SelectOption({ options }) {
                         bg-white py-1 text-base shadow-lg ring-1 ring-strict-black ring-opacity-70
                         focus:outline-none dark:bg-strict-black dark:ring-pale-white sm:text-sm'
                         >
-                            {options.map((option, optionIdx) => (
+                            {options.map((option, id) => (
                                 <Listbox.Option
                                     className={({ active }) =>
                                         `relative mx-1 flex cursor-pointer select-none items-center rounded-md py-2 px-3 ${
                                             active
-                                                ? 'bg-gray-700/10 dark:bg-white/5'
+                                                ? 'bg-gray-100/50 dark:bg-white/5'
                                                 : 'text-black dark:text-pale-white'
                                         }`
                                     }
-                                    key={optionIdx}
+                                    key={id}
                                     value={option}
                                 >
                                     {({ selected }) => (
@@ -161,21 +134,47 @@ export function SelectOption({ options }) {
     )
 }
 
-export default function RulersOptions() {
+export default function RulersOptions({
+    category,
+    setCategory,
+    categories,
+    country,
+    countries,
+    setCountry,
+    rulerTitles,
+    rulerTitle,
+    setRulerTitle,
+}) {
     return (
         <section className='mx-auto flex w-full flex-wrap justify-center gap-x-5 text-strict-black dark:text-pale-white md:flex-row md:justify-start'>
             <div>
-                <span className='ml-1'>Категория:</span>
-                <SelectOption options={personCategories} />
+                <SelectOption
+                    options={categories}
+                    option={category}
+                    setOption={setCategory}
+                />
             </div>
+            {category === 'ruler' ? (
+                <div>
+                    <SelectOption
+                        options={rulerTitles}
+                        option={rulerTitle}
+                        setOption={setRulerTitle}
+                    />
+                </div>
+            ) : null}
             <div>
+                <SelectOption
+                    options={countries}
+                    option={country}
+                    setOption={setCountry}
+                />
+            </div>
+
+            {/* <div>
                 <span className='ml-1'>Титул:</span>
                 <SelectOption options={rulerTitles} />
-            </div>
-            <div>
-                <span className='ml-1'>Страна:</span>
-                <SelectOption options={personCountries} />
-            </div>
+            </div> */}
         </section>
     )
 }

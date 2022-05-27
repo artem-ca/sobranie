@@ -76,6 +76,18 @@ export function PersonCard({ person }) {
 export default function PesronsList({ rulerTitle, limit, country, category }) {
     const [persons, setPersons] = useState([])
 
+    function personFilter(person) {
+        if (category === 'all' && country === 'all') {
+            return true
+        } else if (category === 'all') {
+            return person.country === country
+        } else if (country === 'all') {
+            return person.category === category
+        } else {
+            return person.category === category && person.country === country
+        }
+    }
+
     useEffect(() => {
         const collectionRef = collection(db, 'Persons')
 
@@ -97,8 +109,7 @@ export default function PesronsList({ rulerTitle, limit, country, category }) {
         <section className='flex flex-wrap justify-evenly gap-10'>
             {persons
                 .sort(sortByNickname)
-                .filter((emperor) => emperor.rulerTitle === rulerTitle)
-                .filter((emperor) => emperor.country === country)
+                .filter(personFilter)
                 .slice(0, limit)
                 .map((person) => (
                     <PersonCard person={person} />
