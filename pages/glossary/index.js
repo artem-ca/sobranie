@@ -20,12 +20,14 @@ import 'firebase/firestore'
 
 import SearchButton from '../../components/SearchButton'
 import PesronsList from '../../components/PersonsList'
+import { sortByTitle } from '../../utils'
 
 const categories = [
     { id: 1, title: 'Личности', path: '/glossary/persons' },
     { id: 2, title: 'Этносы', path: '/glossary/ethnics' },
     { id: 3, title: 'Расы', path: '/glossary/races' },
     { id: 4, title: 'Слова', path: '/glossary/words' },
+    { id: 6, title: 'Искусство', path: '/glossary/art' },
 ]
 
 const firebaseConfig = {
@@ -45,7 +47,7 @@ const db = getFirestore(app)
 export function GlossaryCategories() {
     return (
         <ul className='m-auto flex flex-wrap justify-center gap-6 gap-x-6 text-center text-2xl font-semibold'>
-            {categories.map(({ id, title, path }) => (
+            {categories.sort(sortByTitle).map(({ id, title, path }) => (
                 <li key={id}>
                     <Link key={id} href={path} passHref>
                         <a
@@ -107,13 +109,13 @@ export default function Glossary({ races, ethnics }) {
             </header>
 
             <div className='space-y-7'>
-                <div className='h-56'>
+                <div className=''>
                     <ToCategoryButton
                         link='glossary/persons'
-                        title='Правители'
+                        title='Личности'
                     />
 
-                    {/* <PesronsList rulerTitle='Император' limit={5} /> */}
+                    <PesronsList category='all' country='all' limit={5} />
                 </div>
 
                 <div>

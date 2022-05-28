@@ -146,7 +146,7 @@ export default function RulersOptions({
     setRulerTitle,
 }) {
     return (
-        <section className='mx-auto flex w-full flex-wrap justify-center gap-x-5 text-strict-black dark:text-pale-white md:flex-row md:justify-start'>
+        <section className='mx-auto flex w-full flex-wrap justify-center gap-5 text-strict-black dark:text-pale-white md:flex-row md:justify-start'>
             <div>
                 <SelectOption
                     options={categories}
