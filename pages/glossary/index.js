@@ -21,6 +21,7 @@ import 'firebase/firestore'
 import SearchButton from '../../components/SearchButton'
 import PesronsList from '../../components/PersonsList'
 import { sortByTitle } from '../../utils'
+import ArtsList from '../../components/ArtsList'
 
 const categories = [
     { id: 1, title: 'Личности', path: '/glossary/persons' },
@@ -116,6 +117,14 @@ export default function Glossary({ races, ethnics }) {
                     />
 
                     <PesronsList category='all' country='all' limit={5} />
+                </div>
+
+                <div>
+                    <ToCategoryButton link='glossary/art' title='Искусство' />
+
+                    <div className='flex flex-wrap justify-evenly gap-10'>
+                        <ArtsList />
+                    </div>
                 </div>
 
                 <div>
