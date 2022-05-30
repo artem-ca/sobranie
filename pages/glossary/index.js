@@ -25,10 +25,12 @@ import ArtsList from '../../components/ArtsList'
 
 const categories = [
     { id: 1, title: 'Личности', path: '/glossary/persons' },
-    { id: 2, title: 'Этносы', path: '/glossary/ethnics' },
-    { id: 3, title: 'Расы', path: '/glossary/races' },
+    { id: 2, title: 'Антропология', path: '/glossary/anthropology' },
+    { id: 3, title: 'История', path: '/glossary/history' },
     { id: 4, title: 'Слова', path: '/glossary/words' },
     { id: 6, title: 'Искусство', path: '/glossary/art' },
+    { id: 7, title: 'Сражения', path: '/glossary/art' },
+    { id: 8, title: 'Архитектура', path: '/glossary/art' },
 ]
 
 const firebaseConfig = {
@@ -47,12 +49,12 @@ const db = getFirestore(app)
 
 export function GlossaryCategories() {
     return (
-        <ul className='m-auto flex flex-wrap justify-center gap-6 gap-x-6 text-center text-2xl font-semibold'>
+        <ul className='m-auto flex max-w-4xl flex-wrap justify-center gap-6 gap-x-6 text-center text-2xl font-semibold'>
             {categories.sort(sortByTitle).map(({ id, title, path }) => (
                 <li key={id}>
                     <Link key={id} href={path} passHref>
                         <a
-                            className='select-none rounded-xl border-2 border-strict-black px-3 py-1 transition delay-5
+                            className='select-none rounded-[14px] border-2 border-strict-black px-3 py-1 transition delay-5
                 duration-100 ease-in-out hover:bg-strict-black
                 hover:text-pale-white dark:border-pale-white/90 dark:text-pale-white 
                  dark:hover:bg-pale-white dark:hover:text-strange-black'

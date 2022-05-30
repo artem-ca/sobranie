@@ -1,17 +1,18 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { sortByTitle } from '../../utils'
 
 const categories = [
+    { id: 3, title: 'Антропология', path: '/journal/anthropology' },
     { id: 1, title: 'Политика', path: '/journal/politics' },
     { id: 2, title: 'История', path: '/journal/history' },
-    { id: 3, title: 'Антропология', path: '/journal/anthropology' },
     { id: 4, title: 'Искусство', path: '/journal/art' },
 ]
 
 export function JournalCategories() {
     return (
         <ul className='m-auto flex flex-wrap justify-center gap-6 gap-x-6 text-center text-2xl font-semibold'>
-            {categories.map(({ id, title, path }) => (
+            {categories.sort(sortByTitle).map(({ id, title, path }) => (
                 <li key={id}>
                     <Link key={id} href={path} passHref>
                         <a
@@ -42,7 +43,7 @@ export default function Journal() {
                 <JournalCategories />
             </header>
             <Image
-                className='absolute mx-auto rounded-3xl'
+                className='absolute mx-auto w-full rounded-3xl'
                 src='/../public/canaletto_canal.jpg'
                 alt='Picture of the author'
                 layout='responsive'
