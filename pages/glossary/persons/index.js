@@ -6,10 +6,7 @@ import { useRouter } from 'next/router'
 
 import BackButton from '../../../components/BackButton'
 import PesronsList from '../../../components/PersonsList'
-import RulersOptions, {
-    SelectRulerTitle,
-    TestCounter,
-} from '../../../components/RulersOptions'
+import PersonsOptions from '../../../components/PersonsOptions'
 import { useState } from 'react'
 
 const personCategories = [
@@ -61,7 +58,7 @@ export default function Persons({ emperors, tsars }) {
             </h2>
 
             <div className='m-auto mt-10 max-w-5xl'>
-                <RulersOptions
+                <PersonsOptions
                     categories={personCategories}
                     category={category}
                     setCategory={setCategory}

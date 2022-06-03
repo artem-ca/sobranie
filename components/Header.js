@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Router from 'next/router'
 
-import { Popover, Transition, Dialog } from '@headlessui/react'
+import { Transition, Dialog } from '@headlessui/react'
 import { Fragment } from 'react'
 
 import clsx from 'clsx'
@@ -15,7 +15,7 @@ const navigation = [
     { id: 2, title: 'Журнал', path: '/journal' },
     // { id: 3, title: 'Курсы', path: '/courses' },
     { id: 4, title: 'Магазин', path: '/shop' },
-    // { id: 5, title: 'О нас', path: '/about' },
+    // { id: 5, title: 'О проекте', path: '/about' },
 ]
 
 function BookmarkIcon() {
@@ -156,8 +156,8 @@ export function NavPopover({ display = 'md:hidden', className, ...props }) {
                         leaveTo='opacity-0 translate-y-1'
                     >
                         <div
-                            className='fixed top-5 right-7 w-full max-w-xs rounded-lg border-pale-white/50 bg-strict-black p-6 text-base 
-                  font-semibold text-pale-white shadow-lg dark:border-2'
+                            className='fixed top-5 right-7 w-full max-w-xs rounded-lg bg-strict-black p-6 text-base font-semibold 
+                  text-pale-white shadow-lg ring-pale-white dark:ring-1'
                         >
                             <button
                                 type='button'
@@ -223,7 +223,7 @@ export default function Header() {
     return (
         <section
             className={clsx(
-                'sticky top-0 z-40 w-full flex-none select-none border-pale-white/70 font-montserrat backdrop-blur transition-colors duration-700 dark:border-b lg:z-50',
+                'sticky top-0 z-40 w-full flex-none select-none font-montserrat ring-pale-white/60 backdrop-blur transition-colors duration-700 dark:ring-1 lg:z-50',
                 isOpaque
                     ? 'supports-backdrop-blur:bg-strict-black/10 bg-strict-black/90 shadow-lg dark:bg-strange-black/75'
                     : 'supports-backdrop-blur:bg-strict-black/60 bg-strict-black dark:bg-transparent'

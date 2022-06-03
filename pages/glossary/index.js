@@ -1,12 +1,4 @@
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
-
-import RaceCard from '../../components/RaceCard'
-import EthnicCard from '../../components/EthnicCard'
 
 import { initializeApp } from 'firebase/app'
 import {
@@ -18,19 +10,24 @@ import {
 } from 'firebase/firestore'
 import 'firebase/firestore'
 
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
+
+import RaceCard from '../../components/RaceCard'
+import EthnicCard from '../../components/EthnicCard'
 import SearchButton from '../../components/SearchButton'
 import PesronsList from '../../components/PersonsList'
-import { sortByTitle } from '../../utils'
 import ArtsList from '../../components/ArtsList'
 
 const categories = [
-    { id: 1, title: 'Личности', path: '/glossary/persons' },
+    { id: 0, title: 'Все', path: '/glossary' },
     { id: 2, title: 'Антропология', path: '/glossary/anthropology' },
-    { id: 3, title: 'История', path: '/glossary/history' },
-    { id: 4, title: 'Слова', path: '/glossary/words' },
-    { id: 6, title: 'Искусство', path: '/glossary/art' },
-    { id: 7, title: 'Сражения', path: '/glossary/art' },
     { id: 8, title: 'Архитектура', path: '/glossary/art' },
+    { id: 6, title: 'Искусство', path: '/glossary/art' },
+    { id: 3, title: 'История', path: '/glossary/history' },
+    { id: 1, title: 'Личности', path: '/glossary/persons' },
+    { id: 4, title: 'Слова', path: '/glossary/words' },
 ]
 
 const firebaseConfig = {
@@ -50,7 +47,7 @@ const db = getFirestore(app)
 export function GlossaryCategories() {
     return (
         <ul className='m-auto flex max-w-4xl flex-wrap justify-center gap-6 gap-x-6 text-center text-2xl font-semibold'>
-            {categories.sort(sortByTitle).map(({ id, title, path }) => (
+            {categories.map(({ id, title, path }) => (
                 <li key={id}>
                     <Link key={id} href={path} passHref>
                         <a
@@ -154,7 +151,7 @@ export default function Glossary({ races, ethnics }) {
 }
 
 export async function getStaticProps() {
-    const rulersFiles = fs.readdirSync(path.join('posts/rulers'))
+    const rulersFiles = fs.readdirSync(path.join('posts/persons'))
     const racesFiles = fs.readdirSync(path.join('posts/races'))
     const ethnicsFiles = fs.readdirSync(path.join('posts/ethnics'))
 
@@ -162,7 +159,7 @@ export async function getStaticProps() {
         const slug = filename.replace('.mdx', '')
 
         const markdownWithMetadata = fs.readFileSync(
-            path.join('posts/rulers', filename),
+            path.join('posts/persons', filename),
             'utf-8'
         )
 

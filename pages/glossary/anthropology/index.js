@@ -8,7 +8,7 @@ export default function Anthropology({}) {
             <div className='text-center text-3xl font-bold '>Антропология</div>
 
             <div className='m-auto mt-12 max-w-5xl'>
-                <div className='m-auto w-max gap-10'>КХм</div>
+                <div className='m-auto w-max gap-10'>Расы и Этносы</div>
             </div>
         </div>
     )

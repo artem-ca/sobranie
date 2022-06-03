@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 
 export function SelectorIcon() {
@@ -115,7 +115,7 @@ export function SelectOption({ options, option, setOption }) {
     )
 }
 
-export default function RulersOptions({
+export default function PersonsOptions({
     category,
     setCategory,
     categories,
