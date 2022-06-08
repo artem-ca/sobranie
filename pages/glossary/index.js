@@ -21,7 +21,7 @@ import PesronsList from '../../components/PersonsList'
 import ArtsList from '../../components/ArtsList'
 
 const categories = [
-    { id: 0, title: 'Все', path: '/glossary' },
+    // { id: 0, title: 'Все', path: '/glossary' },
     { id: 2, title: 'Антропология', path: '/glossary/anthropology' },
     { id: 8, title: 'Архитектура', path: '/glossary/art' },
     { id: 6, title: 'Искусство', path: '/glossary/art' },
