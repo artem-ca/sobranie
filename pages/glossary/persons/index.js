@@ -84,7 +84,7 @@ export default function Persons({ emperors, tsars }) {
 
 export async function getStaticProps() {
     // Get files from the post dir
-    const rulersFiles = fs.readdirSync(path.join('posts/rulers'))
+    const rulersFiles = fs.readdirSync(path.join('posts/persons'))
 
     // Get slug and frontmatter from posts
     const rulers = rulersFiles.map((filename) => {
@@ -93,7 +93,7 @@ export async function getStaticProps() {
 
         // Get frontmatter
         const markdownWithMetadata = fs.readFileSync(
-            path.join('posts/rulers', filename),
+            path.join('posts/persons', filename),
             'utf-8'
         )
 

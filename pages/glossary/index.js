@@ -71,7 +71,7 @@ export function ToCategoryButton({ link, title }) {
             <a
                 className='group m-auto mb-4 flex  w-full cursor-pointer items-center rounded-md py-2 
                         px-3 font-semibold transition delay-5 duration-300 ease-in-out
-                        hover:shadow-md dark:hover:bg-slate-200/10 dark:hover:text-orange-300'
+                        hover:opacity-80 dark:hover:bg-slate-200/10 dark:hover:text-orange-300 dark:hover:opacity-100 dark:hover:shadow-md'
             >
                 {title}
                 <svg
