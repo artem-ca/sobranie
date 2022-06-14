@@ -118,13 +118,13 @@ export default function Glossary({ races, ethnics }) {
                     <PesronsList category='all' country='all' limit={5} />
                 </div>
 
-                <div>
+                {/* <div>
                     <ToCategoryButton link='glossary/art' title='Искусство' />
 
                     <div className='flex flex-wrap justify-evenly gap-10'>
                         <ArtsList />
                     </div>
-                </div>
+                </div> */}
 
                 <div>
                     <ToCategoryButton link='glossary/races' title='Расы' />

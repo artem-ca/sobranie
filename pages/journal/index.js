@@ -42,7 +42,7 @@ export default function Journal() {
                 </p>
                 <JournalCategories />
             </header>
-            <Image
+            {/* <Image
                 className='absolute mx-auto w-full rounded-3xl'
                 src='/../public/canaletto_canal.jpg'
                 alt='Picture of the author'
@@ -57,7 +57,7 @@ export default function Journal() {
                 layout='responsive'
                 width={1200}
                 height={857}
-            />
+            /> */}
         </main>
     )
 }
