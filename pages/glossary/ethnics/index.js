@@ -17,7 +17,7 @@ export default function Ethnics({ posts }) {
             <div className='text-center text-3xl font-bold '>Этносы</div>
 
             <div className='m-auto mt-12 max-w-5xl'>
-                <div className='m-auto w-max gap-10'>
+                <div className='flex flex-wrap justify-center gap-20'>
                     {posts.map((post, index) => (
                         <EthnicCard key={index} post={post} />
                     ))}

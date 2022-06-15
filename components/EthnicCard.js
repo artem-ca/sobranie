@@ -3,18 +3,18 @@ import Link from 'next/link'
 export default function EthnicCard({ post }) {
     return (
         <section
-            className='max-w-md cursor-pointer transition duration-300 delay-10 ease-in-out 
-                        transform hover:-translate-y-1'
+            className=' max-w-md transform cursor-pointer overflow-hidden 
+                        transition delay-10 duration-300 ease-in-out hover:-translate-y-1'
         >
             <Link href={`/glossary/ethnics/${post.slug}`}>
                 <a className=''>
                     <img
                         src={post.frontmatter.cover_image}
                         alt=''
-                        className='rounded-xl border-2 dark:border-0 border-strict-black'
+                        className='h-72 w-[448px] rounded-xl border-2  border-strict-black dark:border-0'
                     />
 
-                    <p className='text-2xl font-serif font-semibold mt-2 mx-auto text-center w-32'>
+                    <p className='mx-auto mt-2 w-32 text-center font-serif text-2xl font-semibold'>
                         {post.frontmatter.title}
                     </p>
                 </a>
