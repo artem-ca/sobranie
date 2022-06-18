@@ -4,7 +4,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import { useRouter } from 'next/router'
 
-import { sortByDate } from '../../../utils'
+import { sortByDate, sortByTitle, sortForEthnics } from '../../../utils'
 import EthnicCard from '../../../components/EthnicCard'
 import BackButton from '../../../components/BackButton'
 
@@ -52,7 +52,7 @@ export async function getStaticProps() {
 
     return {
         props: {
-            posts: posts.sort(sortByDate),
+            posts: posts.sort(sortForEthnics),
         },
     }
 }

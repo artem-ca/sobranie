@@ -19,6 +19,7 @@ import EthnicCard from '../../components/EthnicCard'
 import SearchButton from '../../components/SearchButton'
 import PesronsList from '../../components/PersonsList'
 import ArtsList from '../../components/ArtsList'
+import { sortForEthnics } from '../../utils'
 
 const categories = [
     // { id: 0, title: 'Все', path: '/glossary' },
@@ -118,13 +119,18 @@ export default function Glossary({ races, ethnics }) {
                     <PesronsList category='all' country='all' limit={5} />
                 </div>
 
-                {/* <div>
-                    <ToCategoryButton link='glossary/art' title='Искусство' />
+                <div>
+                    <ToCategoryButton link='glossary/ethnics' title='Этносы' />
 
                     <div className='flex flex-wrap justify-evenly gap-10'>
-                        <ArtsList />
+                        {ethnics
+                            .sort(sortForEthnics)
+                            .slice(0, 2)
+                            .map((post, index) => (
+                                <EthnicCard key={index} post={post} />
+                            ))}
                     </div>
-                </div> */}
+                </div>
 
                 <div>
                     <ToCategoryButton link='glossary/races' title='Расы' />
@@ -137,12 +143,10 @@ export default function Glossary({ races, ethnics }) {
                 </div>
 
                 <div>
-                    <ToCategoryButton link='glossary/ethnics' title='Этносы' />
+                    <ToCategoryButton link='glossary/art' title='Искусство' />
 
                     <div className='flex flex-wrap justify-evenly gap-10'>
-                        {ethnics.slice(0, 5).map((post, index) => (
-                            <EthnicCard key={index} post={post} />
-                        ))}
+                        <ArtsList />
                     </div>
                 </div>
             </div>
