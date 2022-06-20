@@ -40,7 +40,7 @@ export function PersonCardForMdx({ post }) {
 export function PersonCard({ person }) {
     return (
         <section
-            className='z-50 w-max transform cursor-pointer overflow-visible transition
+            className='w-max transform cursor-pointer overflow-visible transition
             delay-10 duration-500 ease-in-out hover:-translate-y-2'
         >
             <Link href={`${person.link}`}>
@@ -54,6 +54,60 @@ export function PersonCard({ person }) {
                     <p className='mt-1 w-40 font-semibold'>{person.nickname}</p>
                 </a>
             </Link>
+        </section>
+    )
+}
+
+export function PersonsLine() {
+    const [persons, setPersons] = useState([])
+
+    useEffect(() => {
+        const collectionRef = collection(db, 'Persons')
+
+        const q = query(collectionRef)
+
+        const unsub = onSnapshot(q, (querySnapshot) => {
+            setPersons(
+                querySnapshot.docs.map((doc) => ({
+                    ...doc.data(),
+                    id: doc.id,
+                    nickname: doc.data().nickname,
+                    link: doc.data().link,
+                }))
+            )
+        })
+        return unsub
+    }, [])
+    return (
+        <section className='relative flex select-none'>
+            <Swiper
+                slidesPerView={1}
+                navigation={{
+                    clickable: true,
+                }}
+                breakpoints={{
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 4,
+                        spaceBetween: 40,
+                    },
+                    1024: {
+                        slidesPerView: 5,
+                        spaceBetween: 40,
+                    },
+                }}
+                modules={[Navigation, Pagination]}
+                className='absolute z-50 overflow-visible'
+            >
+                {persons.sort(sortByNickname).map((person, personIdx) => (
+                    <SwiperSlide>
+                        <PersonCard key={personIdx} person={person} />
+                    </SwiperSlide>
+                ))}
+            </Swiper>
         </section>
     )
 }
@@ -91,46 +145,14 @@ export default function PesronsList({ rulerTitle, limit, country, category }) {
         return unsub
     }, [])
     return (
-        <section className='z-50 flex select-none overflow-visible'>
-            {/* {persons
+        <section className='flex select-none flex-wrap justify-center gap-10'>
+            {persons
                 .sort(sortByNickname)
                 .filter(personFilter)
                 .slice(0, limit)
                 .map((person, personIdx) => (
                     <PersonCard key={personIdx} person={person} />
-                ))} */}
-
-            <Swiper
-                slidesPerView={1}
-                navigation={{
-                    clickable: true,
-                }}
-                breakpoints={{
-                    640: {
-                        slidesPerView: 2,
-                        spaceBetween: 20,
-                    },
-                    768: {
-                        slidesPerView: 4,
-                        spaceBetween: 40,
-                    },
-                    1024: {
-                        slidesPerView: 5,
-                        spaceBetween: 40,
-                    },
-                }}
-                modules={[Navigation, Pagination]}
-                className=''
-            >
-                {persons
-                    .sort(sortByNickname)
-                    .filter(personFilter)
-                    .map((person, personIdx) => (
-                        <SwiperSlide>
-                            <PersonCard key={personIdx} person={person} />
-                        </SwiperSlide>
-                    ))}
-            </Swiper>
+                ))}
         </section>
     )
 }

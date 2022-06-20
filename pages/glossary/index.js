@@ -17,9 +17,10 @@ import matter from 'gray-matter'
 import RaceCard from '../../components/RaceCard'
 import EthnicCard from '../../components/EthnicCard'
 import SearchButton from '../../components/SearchButton'
-import PesronsList from '../../components/PersonsList'
+import PesronsList, { PersonsLine } from '../../components/PersonsList'
 import ArtsList from '../../components/ArtsList'
 import { sortForEthnics } from '../../utils'
+import EthnicsLine from '../../components/EthnicsLine'
 
 const categories = [
     // { id: 0, title: 'Все', path: '/glossary' },
@@ -116,7 +117,7 @@ export default function Glossary({ races, ethnics }) {
                         title='Личности'
                     />
 
-                    <PesronsList category='all' country='all' limit={5} />
+                    <PersonsLine />
                 </div>
 
                 <div>
