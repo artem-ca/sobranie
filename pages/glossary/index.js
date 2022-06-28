@@ -99,7 +99,7 @@ export default function Glossary({ races, ethnics }) {
     return (
         <main className='mx-auto max-w-5xl'>
             <header className='py-16 text-center'>
-                <h1 className='mb-4 text-center font-display text-4xl font-bold sm:text-5xl'>
+                <h1 className='mb-4 text-center font-head text-4xl font-bold sm:text-5xl'>
                     Глоссарий
                 </h1>
 

@@ -40,8 +40,8 @@ export function PersonCardForMdx({ post }) {
 export function PersonCard({ person }) {
     return (
         <section
-            className='w-max transform cursor-pointer overflow-visible transition
-            delay-10 duration-500 ease-in-out hover:-translate-y-2'
+            className='w-max transform cursor-pointer overflow-visible
+            transition delay-10 duration-500 ease-in-out hover:-translate-y-2'
         >
             <Link href={`${person.link}`}>
                 <a className=''>
@@ -79,7 +79,7 @@ export function PersonsLine() {
         return unsub
     }, [])
     return (
-        <section className='relative flex select-none'>
+        <section className='flex select-none'>
             <Swiper
                 slidesPerView={1}
                 navigation={{
@@ -100,7 +100,7 @@ export function PersonsLine() {
                     },
                 }}
                 modules={[Navigation, Pagination]}
-                className='absolute z-50 overflow-visible'
+                className=''
             >
                 {persons.sort(sortByNickname).map((person, personIdx) => (
                     <SwiperSlide>
