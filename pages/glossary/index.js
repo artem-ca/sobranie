@@ -1,13 +1,7 @@
 import Link from 'next/link'
 
 import { initializeApp } from 'firebase/app'
-import {
-    getFirestore,
-    collection,
-    getDocs,
-    doc,
-    query,
-} from 'firebase/firestore'
+import { getFirestore } from 'firebase/firestore'
 import 'firebase/firestore'
 
 import fs from 'fs'
@@ -17,10 +11,9 @@ import matter from 'gray-matter'
 import RaceCard from '../../components/RaceCard'
 import EthnicCard from '../../components/EthnicCard'
 import SearchButton from '../../components/SearchButton'
-import PesronsList, { PersonsLine } from '../../components/PersonsList'
+import { PersonsLine } from '../../components/PersonsList'
 import ArtsList from '../../components/ArtsList'
 import { sortForEthnics } from '../../utils'
-import EthnicsLine from '../../components/EthnicsLine'
 
 const categories = [
     // { id: 0, title: 'Все', path: '/glossary' },
