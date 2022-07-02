@@ -197,7 +197,7 @@ export function ThemeToggle({ panelClassName = 'mt-4' }) {
             >
                 <Listbox.Options
                     className={clsx(
-                        'absolute top-full right-0 z-50 w-36 overflow-hidden rounded-lg bg-strict-black p-1 text-sm font-semibold text-slate-300 shadow-xl dark:border',
+                        'absolute top-full right-0 z-50 w-36 overflow-hidden rounded-lg border-0 bg-strict-black p-1 text-sm font-semibold text-slate-300 shadow-xl ring-0 dark:border',
                         panelClassName
                     )}
                 >

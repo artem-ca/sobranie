@@ -7,12 +7,31 @@ import { app } from '../firebase/initFirebase'
 import { sortByNickname } from '../utils'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination } from 'swiper'
+import { Navigation, Pagination, Mousewheel } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 
 const db = getFirestore(app)
+
+function NextIcon() {
+    return (
+        <svg
+            xmlns='http://www.w3.org/2000/svg'
+            class='h-6 w-6'
+            fill='none'
+            viewBox='0 0 24 24'
+            stroke='currentColor'
+            stroke-width='2'
+        >
+            <path
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                d='M13 7l5 5m0 0l-5 5m5-5H6'
+            />
+        </svg>
+    )
+}
 
 export function PersonCardForMdx({ post }) {
     return (
@@ -41,7 +60,7 @@ export function PersonCard({ person }) {
     return (
         <section
             className='w-max transform cursor-pointer overflow-visible
-            transition delay-10 duration-500 ease-in-out hover:-translate-y-2'
+            transition delay-10 duration-500 ease-in-out '
         >
             <Link href={`${person.link}`}>
                 <a className=''>
@@ -81,7 +100,10 @@ export function PersonsLine() {
     return (
         <section className='flex select-none'>
             <Swiper
+                className=''
+                modules={[Navigation, Pagination]}
                 slidesPerView={1}
+                watchOverflow={false}
                 navigation={{
                     clickable: true,
                 }}
@@ -99,8 +121,6 @@ export function PersonsLine() {
                         spaceBetween: 40,
                     },
                 }}
-                modules={[Navigation, Pagination]}
-                className=''
             >
                 {persons.sort(sortByNickname).map((person, personIdx) => (
                     <SwiperSlide>

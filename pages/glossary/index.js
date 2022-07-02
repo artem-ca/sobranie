@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Link from 'next/link'
 
 import { initializeApp } from 'firebase/app'
@@ -64,7 +65,7 @@ export function ToCategoryButton({ link, title }) {
     return (
         <Link href={link} passHref>
             <a
-                className='group m-auto mb-4 flex  w-full cursor-pointer items-center rounded-md py-2 
+                className='group m-auto mb-4 flex w-full cursor-pointer items-center rounded-md py-2 
                         px-3 font-semibold transition delay-5 duration-300 ease-in-out
                         hover:opacity-80 dark:hover:bg-slate-200/10 dark:hover:text-orange-300 dark:hover:opacity-100 dark:hover:shadow-md'
             >
@@ -91,8 +92,14 @@ export function ToCategoryButton({ link, title }) {
 export default function Glossary({ races, ethnics }) {
     return (
         <main className='mx-auto max-w-5xl'>
-            <header className='py-16 text-center'>
-                <h1 className='mb-4 text-center font-head text-4xl font-bold sm:text-5xl'>
+            <Head>
+                <title className=''>Sobranie</title>
+                <meta name='description' content='Founded by Zaidullin' />
+                <link rel='icon' href='/CoatofRussianEmpire.ico' />
+            </Head>
+
+            <header className='pt-16 pb-10 text-center'>
+                <h1 className='mb-4 text-center font-display text-4xl font-bold sm:text-5xl'>
                     Глоссарий
                 </h1>
 
@@ -136,13 +143,13 @@ export default function Glossary({ races, ethnics }) {
                     </div>
                 </div>
 
-                <div>
+                {/* <div>
                     <ToCategoryButton link='glossary/art' title='Искусство' />
 
                     <div className='flex flex-wrap justify-evenly gap-10'>
                         <ArtsList />
                     </div>
-                </div>
+                </div> */}
             </div>
         </main>
     )
