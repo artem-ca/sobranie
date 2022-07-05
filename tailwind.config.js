@@ -44,9 +44,10 @@ module.exports = {
         },
         extend: {
             fontFamily: {
-                display: ['Sen', 'San-serif', 'Roboto'],
                 head: ['Playfair Display'],
+                display: ['Playfair Display', 'San-serif', 'Roboto'],
                 montserrat: ['Montserrat', 'sans-serif'],
+                sen: ['Sen', 'sans-serif', 'Roboto'],
             },
 
             fontSize: {

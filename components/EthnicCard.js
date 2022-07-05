@@ -4,7 +4,7 @@ export default function EthnicCard({ post }) {
     return (
         <section
             className=' max-w-md transform cursor-pointer overflow-hidden 
-                        transition delay-10 duration-300 ease-in-out hover:-translate-y-1'
+                        transition delay-10 duration-300 ease-in-out '
         >
             <Link href={`/glossary/ethnics/${post.slug}`}>
                 <a className=''>

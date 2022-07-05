@@ -16,6 +16,13 @@ import { PersonsLine } from '../../components/PersonsList'
 import ArtsList from '../../components/ArtsList'
 import { sortForEthnics } from '../../utils'
 
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Mousewheel } from 'swiper'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+import RecommendationBlock from '../../components/RecommendationBlock'
+
 const categories = [
     // { id: 0, title: 'Все', path: '/glossary' },
     { id: 2, title: 'Антропология', path: '/glossary/anthropology' },
@@ -103,6 +110,13 @@ export default function Glossary({ races, ethnics }) {
                     Глоссарий
                 </h1>
 
+                {/* <div className='mb-4 flex space-x-5 text-center text-4xl font-bold sm:text-5xl'>
+                    <h1 className='font-sen'>Glossary</h1>
+                    <h1 className='font-montserrat'>Glossary</h1>
+                    <h1 className='font-display'>Glossary</h1>
+                    <h1 className='font-head'>Glossary</h1>
+                </div> */}
+
                 <p className='mb-7 tracking-wide text-slate-700 first-line:text-lg dark:text-pale-white/90'>
                     Энциклопедия, которую ты заслужил.
                 </p>
@@ -121,6 +135,10 @@ export default function Glossary({ races, ethnics }) {
                 </div>
 
                 <div>
+                    <RecommendationBlock />
+                </div>
+
+                <div className=''>
                     <ToCategoryButton link='glossary/ethnics' title='Этносы' />
 
                     <div className='flex flex-wrap justify-evenly gap-10'>
