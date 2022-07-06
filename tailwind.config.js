@@ -27,6 +27,8 @@ module.exports = {
                 'inset 15px -45px 25px rgba(0, 0, 0, 0.3), 1px 1px 5px rgba(0, 0, 0, 0.3)',
             'inner-3':
                 'inset 2px -70px 25px rgba(0, 0, 0, 0.3), 1px 1px 5px rgba(0, 0, 0, 0.3)',
+            'inner-4':
+                'inset -9px -90px 90px rgba(1, 1, 1, 0.3), 1px 1px 5px rgba(1, 1, 1, 1.7)',
             none: 'none',
         },
 
@@ -48,6 +50,10 @@ module.exports = {
                 display: ['Playfair Display', 'San-serif', 'Roboto'],
                 montserrat: ['Montserrat', 'sans-serif'],
                 sen: ['Sen', 'sans-serif', 'Roboto'],
+                cormorantinfant: ['Cormorant Infant'],
+                comfortaa: ['Comfortaa'],
+                poiret: ['Poiret One'],
+                lora: ['Lora'],
             },
 
             fontSize: {
@@ -157,6 +163,7 @@ module.exports = {
                 82: '20.5rem',
                 90: '22.5rem',
                 92.5: '23.125rem',
+                98: '24.5rem',
                 100: '25rem',
                 120: '30rem',
                 155: '38.75rem',

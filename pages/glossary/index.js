@@ -17,7 +17,7 @@ import ArtsList from '../../components/ArtsList'
 import { sortForEthnics } from '../../utils'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination, Mousewheel } from 'swiper'
+import { Navigation, Pagination, Mousewheel, Autoplay } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
@@ -124,7 +124,7 @@ export default function Glossary({ races, ethnics }) {
                 <SearchButton />
             </header>
 
-            <div className='space-y-7'>
+            <div className='flex flex-col gap-y-7'>
                 <div className=''>
                     <ToCategoryButton
                         link='glossary/persons'
@@ -134,8 +134,39 @@ export default function Glossary({ races, ethnics }) {
                     <PersonsLine />
                 </div>
 
-                <div>
-                    <RecommendationBlock />
+                <div className='my-3 flex w-full'>
+                    <Swiper
+                        spaceBetween={30}
+                        pagination={{
+                            clickable: true,
+                        }}
+                        navigation={true}
+                        autoplay={{
+                            delay: 10000,
+                            disableOnInteraction: false,
+                        }}
+                        modules={[Pagination, Navigation, Autoplay]}
+                        className='mySwiper'
+                    >
+                        <SwiperSlide>
+                            <RecommendationBlock />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <RecommendationBlock />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <RecommendationBlock />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <RecommendationBlock />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <RecommendationBlock />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <RecommendationBlock />
+                        </SwiperSlide>
+                    </Swiper>
                 </div>
 
                 <div className=''>
