@@ -1,18 +1,24 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-export default function RecommendationBlock({}) {
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Mousewheel, Autoplay } from 'swiper'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+
+export function RecommendationItem() {
     return (
         <section className=''>
             <div
                 className='group flex h-98 w-full cursor-pointer place-items-center content-center justify-center 
-            self-center rounded-3xl bg-[url("/novgorodskoi.jpeg")] bg-cover
-            bg-center text-center text-pale-white'
+        self-center rounded-3xl bg-[url("/novgorodskoi.jpeg")] bg-cover
+        bg-center text-center text-pale-white'
             >
                 <div
                     className='flex h-full w-full place-content-center items-center 
-                justify-center rounded-3xl bg-black bg-opacity-50 
-                transition duration-300 ease-in-out hover:bg-opacity-[.53]'
+            justify-center rounded-3xl bg-black bg-opacity-50 
+            transition duration-300 ease-in-out hover:bg-opacity-[.53]'
                 >
                     <div className='flex max-w-md flex-col place-content-center items-center justify-center space-y-6'>
                         <h2 className='font-display text-base font-bold'>
@@ -29,7 +35,7 @@ export default function RecommendationBlock({}) {
 
                         <div
                             className='flex w-20 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent p-1.5 opacity-90 ring-1 
-                        ring-white transition duration-300 ease-in-out group-hover:opacity-70'
+                    ring-white transition duration-300 ease-in-out group-hover:opacity-70'
                         >
                             <svg
                                 xmlns='http://www.w3.org/2000/svg'
@@ -50,5 +56,44 @@ export default function RecommendationBlock({}) {
                 </div>
             </div>
         </section>
+    )
+}
+
+export default function RecommendationBlock({}) {
+    return (
+        <>
+            <Swiper
+                spaceBetween={30}
+                pagination={{
+                    clickable: true,
+                }}
+                navigation={true}
+                autoplay={{
+                    delay: 10000,
+                    disableOnInteraction: false,
+                }}
+                modules={[Pagination, Navigation, Autoplay]}
+                className='mySwiper'
+            >
+                <SwiperSlide>
+                    <RecommendationItem />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <RecommendationItem />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <RecommendationItem />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <RecommendationItem />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <RecommendationItem />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <RecommendationItem />
+                </SwiperSlide>
+            </Swiper>
+        </>
     )
 }

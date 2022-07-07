@@ -12,15 +12,10 @@ import matter from 'gray-matter'
 import RaceCard from '../../components/RaceCard'
 import EthnicCard from '../../components/EthnicCard'
 import SearchButton from '../../components/SearchButton'
-import { PersonsLine } from '../../components/PersonsList'
+import PersonsList, { PersonsLine } from '../../components/PersonsList'
 import ArtsList from '../../components/ArtsList'
 import { sortForEthnics } from '../../utils'
 
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination, Mousewheel, Autoplay } from 'swiper'
-import 'swiper/css'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
 import RecommendationBlock from '../../components/RecommendationBlock'
 
 const categories = [
@@ -110,13 +105,6 @@ export default function Glossary({ races, ethnics }) {
                     Глоссарий
                 </h1>
 
-                {/* <div className='mb-4 flex space-x-5 text-center text-4xl font-bold sm:text-5xl'>
-                    <h1 className='font-sen'>Glossary</h1>
-                    <h1 className='font-montserrat'>Glossary</h1>
-                    <h1 className='font-display'>Glossary</h1>
-                    <h1 className='font-head'>Glossary</h1>
-                </div> */}
-
                 <p className='mb-7 tracking-wide text-slate-700 first-line:text-lg dark:text-pale-white/90'>
                     Энциклопедия, которую ты заслужил.
                 </p>
@@ -131,42 +119,16 @@ export default function Glossary({ races, ethnics }) {
                         title='Личности'
                     />
 
-                    <PersonsLine />
+                    <PersonsList
+                        category='all'
+                        country='all'
+                        rulerTitle='all'
+                        limit={5}
+                    />
                 </div>
 
                 <div className='my-3 flex w-full'>
-                    <Swiper
-                        spaceBetween={30}
-                        pagination={{
-                            clickable: true,
-                        }}
-                        navigation={true}
-                        autoplay={{
-                            delay: 10000,
-                            disableOnInteraction: false,
-                        }}
-                        modules={[Pagination, Navigation, Autoplay]}
-                        className='mySwiper'
-                    >
-                        <SwiperSlide>
-                            <RecommendationBlock />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <RecommendationBlock />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <RecommendationBlock />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <RecommendationBlock />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <RecommendationBlock />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <RecommendationBlock />
-                        </SwiperSlide>
-                    </Swiper>
+                    <RecommendationBlock />
                 </div>
 
                 <div className=''>

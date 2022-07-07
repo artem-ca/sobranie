@@ -33,6 +33,11 @@ function NextIcon() {
     )
 }
 
+function GetRandom(arr, limit) {
+    var rand = Math.floor(Math.random() * arr.length)
+    return rand
+}
+
 export function PersonCardForMdx({ post }) {
     return (
         <section
@@ -123,7 +128,7 @@ export function PersonsLine() {
                 }}
             >
                 {persons.sort(sortByNickname).map((person, personIdx) => (
-                    <SwiperSlide>
+                    <SwiperSlide key={personIdx}>
                         <PersonCard key={personIdx} person={person} />
                     </SwiperSlide>
                 ))}
@@ -132,7 +137,7 @@ export function PersonsLine() {
     )
 }
 
-export default function PesronsList({ rulerTitle, limit, country, category }) {
+export default function PersonsList({ rulerTitle, limit, country, category }) {
     const [persons, setPersons] = useState([])
 
     function personFilter(person) {
