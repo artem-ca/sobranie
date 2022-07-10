@@ -1,13 +1,14 @@
 import Head from 'next/head'
+
+import { useState } from 'react'
+
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { useRouter } from 'next/router'
 
 import BackButton from '../../../components/BackButton'
-import PesronsList from '../../../components/PersonsList'
+import PesronsList from '../../../components/Persons'
 import PersonsOptions from '../../../components/PersonsOptions'
-import { useState } from 'react'
 
 const personCategories = [
     { id: 0, value: 'all', title: 'Категория' },

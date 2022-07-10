@@ -25,7 +25,7 @@ export function RecommendationItem() {
                             Журнал
                         </h2>
                         <h3 className='max-w-sm font-lora text-2xl font-bold'>
-                            Взлет и падение Новогородской республики
+                            ç Взлет и падение Новогородской республики
                         </h3>
                         <p className='font-comfortaa text-sm'>
                             Новая статья историка Павла Лукина — о том, как в

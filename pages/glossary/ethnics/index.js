@@ -5,8 +5,8 @@ import matter from 'gray-matter'
 import { useRouter } from 'next/router'
 
 import { sortByDate, sortByTitle, sortForEthnics } from '../../../utils'
-import EthnicCard from '../../../components/EthnicCard'
 import BackButton from '../../../components/BackButton'
+import { EthnicsList } from '../../../components/Ethnics'
 
 export default function Ethnics({ posts }) {
     const router = useRouter()
@@ -17,11 +17,12 @@ export default function Ethnics({ posts }) {
             <div className='text-center text-3xl font-bold '>Этносы</div>
 
             <div className='m-auto mt-12 max-w-5xl'>
-                <div className='flex flex-wrap justify-center gap-x-20 gap-y-10'>
+                {/* <div className='flex flex-wrap justify-center gap-x-20 gap-y-10'>
                     {posts.map((post, index) => (
                         <EthnicCard key={index} post={post} />
                     ))}
-                </div>
+                </div> */}
+                <EthnicsList />
             </div>
         </div>
     )

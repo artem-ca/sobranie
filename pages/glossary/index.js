@@ -10,13 +10,13 @@ import path from 'path'
 import matter from 'gray-matter'
 
 import RaceCard from '../../components/RaceCard'
-import EthnicCard from '../../components/EthnicCard'
 import SearchButton from '../../components/SearchButton'
-import PersonsList, { PersonsLine } from '../../components/PersonsList'
+import PersonsList, { PersonsLine } from '../../components/Persons'
 import ArtsList from '../../components/ArtsList'
 import { sortForEthnics } from '../../utils'
 
 import RecommendationBlock from '../../components/RecommendationBlock'
+import { EthnicCardForMdx, EthnicsList } from '../../components/Ethnics'
 
 const categories = [
     // { id: 0, title: 'Все', path: '/glossary' },
@@ -134,14 +134,16 @@ export default function Glossary({ races, ethnics }) {
                 <div className=''>
                     <ToCategoryButton link='glossary/ethnics' title='Этносы' />
 
-                    <div className='flex flex-wrap justify-evenly gap-10'>
+                    <EthnicsList limit={2} />
+
+                    {/* <div className='flex flex-wrap justify-evenly gap-10'>
                         {ethnics
                             .sort(sortForEthnics)
                             .slice(0, 2)
                             .map((post, index) => (
-                                <EthnicCard key={index} post={post} />
+                                <EthnicCardForMdx key={index} post={post} />
                             ))}
-                    </div>
+                    </div> */}
                 </div>
 
                 <div>
