@@ -54,7 +54,7 @@ export function EthnicCard({ ethnic }) {
                         className='h-72 w-[448px] rounded-xl border-2  border-strict-black dark:border-0'
                     />
 
-                    <p className='mx-auto mt-2 w-32 text-center font-serif text-2xl font-semibold'>
+                    <p className='mx-auto mt-2 text-center font-serif text-2xl font-semibold'>
                         {ethnic.title}
                     </p>
                 </a>
