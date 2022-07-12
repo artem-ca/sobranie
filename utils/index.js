@@ -33,7 +33,4 @@ export const sortForEthnics = (a, b) => {
     if (a.title == 'Татары') {
         return -1
     }
-    if (b.title == 'Башкиры') {
-        return 1
-    }
 }
