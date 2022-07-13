@@ -9,14 +9,15 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
-import RaceCard from '../../components/RaceCard'
 import SearchButton from '../../components/SearchButton'
 import PersonsList, { PersonsLine } from '../../components/Persons'
-import ArtsList from '../../components/ArtsList'
-import { sortForEthnics } from '../../utils'
 
 import RecommendationBlock from '../../components/RecommendationBlock'
-import { EthnicCardForMdx, EthnicsList } from '../../components/Ethnics'
+import EthnicsLine, {
+    EthnicCardForMdx,
+    EthnicsList,
+} from '../../components/Ethnics'
+import RacesList, { RacesLine } from '../../components/Races'
 
 const categories = [
     // { id: 0, title: 'Все', path: '/glossary' },
@@ -68,7 +69,7 @@ export function ToCategoryButton({ link, title }) {
         <Link href={link} passHref>
             <a
                 className='group m-auto mb-4 flex w-full cursor-pointer items-center rounded-md py-2 
-                        px-3 font-semibold transition delay-5 duration-300 ease-in-out
+                        px-3 font-semibold transition delay-5 duration-300 ease-in-out hover:bg-gray-100
                         hover:opacity-80 dark:hover:bg-slate-200/10 dark:hover:text-orange-300 dark:hover:opacity-100 dark:hover:shadow-md'
             >
                 {title}
@@ -127,42 +128,25 @@ export default function Glossary({ races, ethnics }) {
                     />
                 </div>
 
+                <div className='flex flex-wrap justify-around'>
+                    <div>
+                        <ToCategoryButton
+                            link='glossary/ethnics'
+                            title='Этносы'
+                        />
+
+                        <EthnicsLine />
+                    </div>
+
+                    <div>
+                        <ToCategoryButton link='glossary/races' title='Расы' />
+
+                        <RacesLine />
+                    </div>
+                </div>
                 <div className='my-3 flex w-full'>
                     <RecommendationBlock />
                 </div>
-
-                <div className=''>
-                    <ToCategoryButton link='glossary/ethnics' title='Этносы' />
-
-                    <EthnicsList limit={2} />
-
-                    {/* <div className='flex flex-wrap justify-evenly gap-10'>
-                        {ethnics
-                            .sort(sortForEthnics)
-                            .slice(0, 2)
-                            .map((post, index) => (
-                                <EthnicCardForMdx key={index} post={post} />
-                            ))}
-                    </div> */}
-                </div>
-
-                <div>
-                    <ToCategoryButton link='glossary/races' title='Расы' />
-
-                    <div className='flex flex-wrap justify-evenly gap-10'>
-                        {races.slice(0, 5).map((post, index) => (
-                            <RaceCard key={index} post={post} />
-                        ))}
-                    </div>
-                </div>
-
-                {/* <div>
-                    <ToCategoryButton link='glossary/art' title='Искусство' />
-
-                    <div className='flex flex-wrap justify-evenly gap-10'>
-                        <ArtsList />
-                    </div>
-                </div> */}
             </div>
         </main>
     )

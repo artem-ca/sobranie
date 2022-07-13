@@ -5,8 +5,9 @@ import matter from 'gray-matter'
 import { useRouter } from 'next/router'
 
 import { sortByDate } from '../../../utils'
-import RaceCard from '../../../components/RaceCard'
+import RaceCard from '../../../components/Races'
 import BackButton from '../../../components/BackButton'
+import RacesList from '../../../components/Races'
 
 export default function Races({ posts }) {
     const router = useRouter()
@@ -17,11 +18,13 @@ export default function Races({ posts }) {
             <div className='text-center text-3xl font-bold '>Расы</div>
 
             <div className='m-auto mt-12 max-w-5xl'>
-                <div className='flex flex-wrap justify-center gap-20'>
+                <RacesList />
+
+                {/* <div className='flex flex-wrap justify-center gap-20'>
                     {posts.map((post, index) => (
                         <RaceCard key={index} post={post} />
                     ))}
-                </div>
+                </div> */}
             </div>
         </div>
     )

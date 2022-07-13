@@ -43,8 +43,8 @@ export function EthnicCardForMdx({ post }) {
 export function EthnicCard({ ethnic }) {
     return (
         <section
-            className=' max-w-md transform cursor-pointer overflow-hidden 
-                        transition delay-10 duration-300 ease-in-out '
+            className=' max-w-md transform cursor-pointer justify-self-center 
+                        overflow-hidden transition delay-10 duration-300 ease-in-out'
         >
             <Link href={`${ethnic.link}`}>
                 <a className=''>
@@ -92,29 +92,55 @@ export function EthnicsList({ limit }) {
                 .map((ethnic, ethnicIdx) => (
                     <EthnicCard key={ethnicIdx} ethnic={ethnic} />
                 ))}
+
+            {/* <div className='flex flex-wrap justify-evenly gap-10'>
+                {ethnics
+                    .sort(sortForEthnics)
+                    .slice(0, 2)
+                    .map((post, index) => (
+                        <EthnicCardForMdx key={index} post={post} />
+                    ))}
+            </div> */}
         </section>
     )
 }
 
-export default function EthnicsLine({ ethnics }) {
+export default function EthnicsLine({}) {
+    const [ethnics, setEthnic] = useState([])
+
+    useEffect(() => {
+        const collectionRef = collection(db, 'Ethnics')
+
+        const q = query(collectionRef)
+
+        const unsub = onSnapshot(q, (querySnapshot) => {
+            setEthnic(
+                querySnapshot.docs.map((doc) => ({
+                    ...doc.data(),
+                    id: doc.id,
+                    title: doc.data().title,
+                    link: doc.data().link,
+                }))
+            )
+        })
+        return unsub
+    }, [])
+
     return (
-        <section className='flex select-none'>
-            {ethnics
-                .sort(sortForEthnics)
-                .slice(0, 2)
-                .map((post, index) => (
-                    <EthnicCard key={index} post={post} />
-                ))}
+        <section className='center flex max-w-lg select-none'>
             <Swiper
                 slidesPerView={1}
                 navigation={{
                     clickable: true,
                 }}
+                centeredSlides={true}
                 modules={[Navigation, Pagination]}
                 className=''
             >
-                {ethnics.sort(sortForEthnics).map((post, index) => (
-                    <EthnicCard key={index} post={post} />
+                {ethnics.sort(sortForEthnics).map((ethnic, index) => (
+                    <SwiperSlide key={index}>
+                        <EthnicCard key={index} ethnic={ethnic} />
+                    </SwiperSlide>
                 ))}
             </Swiper>
         </section>
