@@ -11,8 +11,7 @@ export function RecommendationItem() {
     return (
         <section className=''>
             <div
-                className='group flex h-98 w-full cursor-pointer place-items-center content-center justify-center 
-        self-center rounded-3xl bg-[url("/novgorodskoi.jpeg")] bg-cover
+                className='group flex h-98 cursor-pointer rounded-3xl bg-[url("/novgorodskoi.jpeg")] bg-cover
         bg-center text-center text-pale-white'
             >
                 <div

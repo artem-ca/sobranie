@@ -43,8 +43,8 @@ export function EthnicCardForMdx({ post }) {
 export function EthnicCard({ ethnic }) {
     return (
         <section
-            className=' max-w-md transform cursor-pointer justify-self-center 
-                        overflow-hidden transition delay-10 duration-300 ease-in-out'
+            className='max-w-md transform cursor-pointer
+                        overflow-hidden transition delay-10 duration-500 ease-in-out hover:-translate-y-2'
         >
             <Link href={`${ethnic.link}`}>
                 <a className=''>
@@ -84,7 +84,7 @@ export function EthnicsList({ limit }) {
         return unsub
     }, [])
     return (
-        <section className='flex flex-wrap justify-center gap-x-20 gap-y-10'>
+        <section className='flex flex-wrap justify-around gap-x-20 gap-y-10'>
             {ethnics
                 .sort(sortByTitle)
                 .sort(sortForEthnics)
@@ -127,7 +127,7 @@ export default function EthnicsLine({}) {
     }, [])
 
     return (
-        <section className='center flex max-w-lg select-none'>
+        <section className='flex max-w-lg select-none items-center'>
             <Swiper
                 slidesPerView={1}
                 navigation={{

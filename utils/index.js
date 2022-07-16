@@ -34,3 +34,11 @@ export const sortForEthnics = (a, b) => {
         return -1
     }
 }
+
+export const sortForRaces = (a) => {
+    if (a.title == 'Европеоидная') {
+        return -1
+    } else {
+        return -1
+    }
+}

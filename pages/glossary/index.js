@@ -114,22 +114,24 @@ export default function Glossary({ races, ethnics }) {
             </header>
 
             <div className='flex flex-col gap-y-7'>
-                <div className=''>
+                <div className='overflow-x-hidden'>
                     <ToCategoryButton
                         link='glossary/persons'
                         title='Личности'
                     />
 
-                    <PersonsList
+                    {/* <PersonsList
                         category='all'
                         country='all'
                         rulerTitle='all'
                         limit={5}
-                    />
+                    /> */}
+
+                    <PersonsLine />
                 </div>
 
                 <div className='flex flex-wrap justify-around'>
-                    <div>
+                    <div className='overflow-x-hidden'>
                         <ToCategoryButton
                             link='glossary/ethnics'
                             title='Этносы'
@@ -138,13 +140,13 @@ export default function Glossary({ races, ethnics }) {
                         <EthnicsLine />
                     </div>
 
-                    <div>
+                    <div className='overflow-x-hidden'>
                         <ToCategoryButton link='glossary/races' title='Расы' />
 
                         <RacesLine />
                     </div>
                 </div>
-                <div className='my-3 flex w-full'>
+                <div className='my-3 flex w-full overflow-x-hidden'>
                     <RecommendationBlock />
                 </div>
             </div>

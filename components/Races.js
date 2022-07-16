@@ -9,6 +9,7 @@ import { Navigation, Pagination } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
+import { sortForRaces } from '../utils'
 
 const db = getFirestore(app)
 
@@ -80,7 +81,7 @@ export function RacesLine({}) {
     }, [])
 
     return (
-        <section className='center flex max-w-xs select-none'>
+        <section className='flex max-w-xs select-none'>
             <Swiper
                 slidesPerView={1}
                 navigation={{
@@ -90,7 +91,7 @@ export function RacesLine({}) {
                 modules={[Navigation, Pagination]}
                 className=''
             >
-                {races.map((race, index) => (
+                {races.sort(sortForRaces).map((race, index) => (
                     <SwiperSlide key={index}>
                         <RaceCard key={index} race={race} />
                     </SwiperSlide>
@@ -123,7 +124,7 @@ export default function RacesList({}) {
 
     return (
         <div className='flex flex-wrap justify-evenly gap-10'>
-            {races.map((race, raceIdx) => (
+            {races.sort(sortForRaces).map((race, raceIdx) => (
                 <RaceCard key={raceIdx} race={race} />
             ))}
 
