@@ -130,7 +130,7 @@ export default function Glossary({ races, ethnics }) {
                     <PersonsLine />
                 </div>
 
-                <div className='flex flex-wrap justify-around'>
+                <div className='flex flex-wrap justify-between'>
                     <div className='overflow-x-hidden'>
                         <ToCategoryButton
                             link='glossary/ethnics'

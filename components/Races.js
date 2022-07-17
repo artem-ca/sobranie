@@ -81,7 +81,7 @@ export function RacesLine({}) {
     }, [])
 
     return (
-        <section className='flex max-w-xs select-none'>
+        <section className='flex max-w-sm select-none'>
             <Swiper
                 slidesPerView={1}
                 navigation={{

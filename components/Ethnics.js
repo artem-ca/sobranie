@@ -127,7 +127,7 @@ export default function EthnicsLine({}) {
     }, [])
 
     return (
-        <section className='flex max-w-lg select-none items-center'>
+        <section className='flex max-w-xl select-none items-center'>
             <Swiper
                 slidesPerView={1}
                 navigation={{

@@ -9,7 +9,7 @@ import 'swiper/css/navigation'
 
 export function RecommendationItem() {
     return (
-        <section className=''>
+        <section className='w-full'>
             <div
                 className='group flex h-98 cursor-pointer rounded-3xl bg-[url("/novgorodskoi.jpeg")] bg-cover
         bg-center text-center text-pale-white'
