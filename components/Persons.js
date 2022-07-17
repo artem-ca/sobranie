@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { getFirestore, collection, onSnapshot, query } from 'firebase/firestore'
 import { app } from '../firebase/initFirebase'
 
-import { sortByNickname } from '../utils'
+import { sortByNickname, shuffle } from '../utils'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Mousewheel } from 'swiper'
@@ -78,6 +78,7 @@ export function PersonsLine() {
         })
         return unsub
     }, [])
+    shuffle(persons)
     return (
         <section className='flex select-none'>
             <Swiper
@@ -103,7 +104,7 @@ export function PersonsLine() {
                     },
                 }}
             >
-                {persons.sort(sortByNickname).map((person, personIdx) => (
+                {persons.map((person, personIdx) => (
                     <SwiperSlide key={personIdx}>
                         <PersonCard key={personIdx} person={person} />
                     </SwiperSlide>
