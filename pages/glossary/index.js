@@ -18,15 +18,18 @@ import EthnicsLine, {
     EthnicsList,
 } from '../../components/Ethnics'
 import RacesList, { RacesLine } from '../../components/Races'
+import { BattlesLine } from '../../components/Battles'
 
 const categories = [
     // { id: 0, title: 'Все', path: '/glossary' },
     { id: 2, title: 'Антропология', path: '/glossary/anthropology' },
-    { id: 8, title: 'Архитектура', path: '/glossary/art' },
-    { id: 6, title: 'Искусство', path: '/glossary/art' },
-    { id: 3, title: 'История', path: '/glossary/history' },
+    // { id: 8, title: 'Архитектура', path: '/glossary/art' },
+    // { id: 6, title: 'Искусство', path: '/glossary/art' },
+    // { id: 3, title: 'История', path: '/glossary/history' },
     { id: 1, title: 'Личности', path: '/glossary/persons' },
-    { id: 4, title: 'Слова', path: '/glossary/words' },
+    { id: 7, title: 'Битвы', path: '/glossary/battles' },
+
+    // { id: 4, title: 'Слова', path: '/glossary/words' },
 ]
 
 const firebaseConfig = {
@@ -148,6 +151,16 @@ export default function Glossary({ races, ethnics }) {
                 </div>
                 <div className='my-3 flex w-full overflow-x-hidden'>
                     <RecommendationBlock />
+                </div>
+                <div className='flex justify-center'>
+                    <div className='overflow-x-hidden'>
+                        <ToCategoryButton
+                            link='glossary/battles'
+                            title='Битвы'
+                        />
+
+                        <BattlesLine />
+                    </div>
                 </div>
             </div>
         </main>
