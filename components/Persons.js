@@ -7,10 +7,11 @@ import { app } from '../firebase/initFirebase'
 import { sortByNickname, shuffle } from '../utils'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination, Mousewheel } from 'swiper'
+import { Navigation, Pagination, Mousewheel, FreeMode } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
+import 'swiper/css/free-mode'
 
 const db = getFirestore(app)
 
@@ -83,9 +84,10 @@ export function PersonsLine() {
         <section className='flex select-none'>
             <Swiper
                 className=''
-                modules={[Navigation, Pagination]}
                 slidesPerView={1}
                 watchOverflow={false}
+                freeMode={true}
+                mousewheel={true}
                 navigation={{
                     clickable: true,
                 }}
@@ -103,6 +105,7 @@ export function PersonsLine() {
                         spaceBetween: 40,
                     },
                 }}
+                modules={[Navigation, Pagination, Mousewheel, FreeMode]}
             >
                 {persons.map((person, personIdx) => (
                     <SwiperSlide key={personIdx}>

@@ -19,6 +19,7 @@ import EthnicsLine, {
 } from '../../components/Ethnics'
 import RacesList, { RacesLine } from '../../components/Races'
 import { BattlesLine } from '../../components/Battles'
+import { CitiesLine } from '../../components/Cities'
 
 const categories = [
     // { id: 0, title: 'Все', path: '/glossary' },
@@ -28,6 +29,7 @@ const categories = [
     // { id: 3, title: 'История', path: '/glossary/history' },
     { id: 1, title: 'Личности', path: '/glossary/persons' },
     { id: 7, title: 'Битвы', path: '/glossary/battles' },
+    { id: 9, title: 'Города', path: '/glossary/cities' },
 
     // { id: 4, title: 'Слова', path: '/glossary/words' },
 ]
@@ -160,6 +162,15 @@ export default function Glossary({ races, ethnics }) {
                         />
 
                         <BattlesLine />
+                    </div>
+
+                    <div className='overflow-x-hidden'>
+                        <ToCategoryButton
+                            link='glossary/cities'
+                            title='Города'
+                        />
+
+                        <CitiesLine />
                     </div>
                 </div>
             </div>
